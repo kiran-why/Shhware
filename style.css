@@ -259,13 +259,98 @@ a:hover {
   }
 }
 
-/* projects page: click a project name to hide / show its description */
-.project summary {
+/* projects, wiki sections: click the heading to hide / show what is under it */
+main summary {
+  list-style: none; /* own marker below, after the heading, so the heading lines up with the text */
   cursor: pointer;
 }
 
-.project summary h2 {
+main summary::-webkit-details-marker {
+  display: none; /* Safari */
+}
+
+/* the arrow right of the heading: closed ▶, open ▼ (like the tree) */
+main summary::after {
+  content: "▶";
+  margin-left: 1ch;
+  color: var(--fg);
+}
+
+main details[open] > summary::after {
+  content: "▼";
+}
+
+main summary h2 {
   display: inline; /* keep the heading on the marker's line */
+}
+
+main table {
+  border-collapse: collapse;
+}
+
+main th,
+main td {
+  padding: 0 3ch 0 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* commands: explicit size, a <pre> would fall back to the small monospace default */
+main pre {
+  font-size: 1rem;
+  overflow-x: auto;
+}
+
+/* hover / focus note: a number after the word, the note shows under it.
+   The note is in the HTML, so lynx and screen readers read it inline. */
+main article {
+  counter-reset: tip;
+}
+
+.tip {
+  position: relative;
+  counter-increment: tip;
+  border-bottom: 1px dotted var(--muted);
+  cursor: help;
+}
+
+.tip::after {
+  content: counter(tip);
+  vertical-align: super;
+  font-size: 0.7em;
+  color: var(--muted);
+}
+
+/* hidden like .visually-hidden until hover / focus */
+.tip-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.tip:hover .tip-text,
+.tip:focus .tip-text {
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  max-width: 40ch;
+  height: auto;
+  padding: 0 1ch;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  color: var(--fg);
+}
+
+/* (important) */
+.star {
+  color: var(--red);
 }
 
 /* vim-like status line at the very bottom; every number on it is enforced by the CSP */

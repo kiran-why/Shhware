@@ -25,48 +25,123 @@
 <main>
 <article>
 <h1>Install</h1>
-<h2>Distributions</h2>
-<p>TODO</p>
-<h3>Artix Linux (s6)</h3>
-<p>TODO</p>
-<h3>Void Linux (musl, runit)</h3>
-<p>TODO</p>
-<h2>Options</h2>
-<p>TODO</p>
-<h3><code>--check</code></h3>
-<p>TODO</p>
-<h3><code>-h, --help</code></h3>
-<p>TODO</p>
-<h2>What install.sh does</h2>
-<p>TODO</p>
-<h3><code>check_system</code></h3>
-<p>TODO</p>
-<h3><code>choose_parts</code></h3>
-<p>TODO</p>
-<h3><code>start_log</code></h3>
-<p>TODO</p>
-<h3><code>enable_nopasswd</code></h3>
-<p>TODO</p>
-<h3><code>distro_prepare</code></h3>
-<p>TODO</p>
-<h3><code>vmware_clipboard</code></h3>
-<p>TODO</p>
-<h3><code>install_packages</code></h3>
-<p>TODO</p>
-<h3><code>configure_gpu</code></h3>
-<p>TODO</p>
-<h3><code>configure_network</code></h3>
-<p>TODO</p>
-<h3><code>enable_services</code></h3>
-<p>TODO</p>
-<h3><code>configure_system</code></h3>
-<p>TODO</p>
-<h3><code>configure_power</code></h3>
-<p>TODO</p>
-<h3><code>link_dotfiles</code></h3>
-<p>TODO</p>
-<h3><code>leftovers</code></h3>
-<p>TODO</p>
+<details class="section">
+<summary><h2>Supported distributions</h2></summary>
+<table>
+<thead>
+<tr><th>Distro</th><th>Init</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Artix Linux</td><td>s6</td><td><span class="tip" tabindex="0">seatd<span class="tip-text"> (instead of elogind)</span></span></td></tr>
+<tr><td>Void Linux</td><td>runit</td><td><span class="tip" tabindex="0">musl<span class="tip-text"> (the C library, instead of glibc)</span></span></td></tr>
+</tbody>
+</table>
+<h3>Coming soon</h3>
+<ul>
+<li>Gentoo</li>
+<li>CRUX</li>
+<li>KISS</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2>Before you start</h2></summary>
+<ul>
+<li>A user in the <code>wheel</code> group. Run everything as that user, <strong>not root</strong>: install.sh stops when run as root.</li>
+<li>Internet.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2>Artix installation</h2></summary>
+<p>A fresh base install with the s6<span class="star">*<span class="visually-hidden"> (important)</span></span> init and seatd<span class="star">*<span class="visually-hidden"> (important)</span></span> (pick <code>seatd-s6</code>). How to install Artix: <a href="https://wiki.artixlinux.org/Main/Installation">wiki.artixlinux.org/Main/Installation</a>.</p>
+<ol>
+<li>Install git:
+<pre><code>sudo pacman -S git</code></pre></li>
+<li>Clone the repo:
+<pre><code>git clone https://github.com/kiran-why/Shh-dotfiles.git ~/Shh-dotfiles</code></pre></li>
+<li>Install the dotfiles:
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh</code></pre>
+The install log: <code>~/.local/state/shh/install.log</code> (the last run only, from the shh config menu on).</li>
+<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="shh.html#config">shh config</a>; <code>shh update</code> downloads it again:
+<pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
+<li>Reboot and log in on tty1: sway starts by itself.</li>
+</ol>
+</details>
+<details class="section">
+<summary><h2>Void installation</h2></summary>
+<p>A fresh base install with <span class="tip" tabindex="0">musl<span class="tip-text"> (the C library, instead of glibc)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span>: the setup is tested on musl only. seatd comes with the packages (no elogind). How to install Void: <a href="https://docs.voidlinux.org/installation/index.html">docs.voidlinux.org/installation</a>.</p>
+<ol>
+<li>Update xbps<span class="star">*<span class="visually-hidden"> (important)</span></span>, a fresh system must do it first:
+<pre><code>sudo xbps-install -Su xbps</code></pre></li>
+<li>Install git:
+<pre><code>sudo xbps-install -S git</code></pre></li>
+<li>Clone the repo:
+<pre><code>git clone https://github.com/kiran-why/Shh-dotfiles.git ~/Shh-dotfiles</code></pre></li>
+<li>Install the dotfiles:
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh</code></pre>
+The install log: <code>~/.local/state/shh/install.log</code> (the last run only, from the shh config menu on).</li>
+<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="shh.html#config">shh config</a>; <code>shh update</code> downloads it again:
+<pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
+<li>Reboot and log in on tty1: sway starts by itself.</li>
+</ol>
+</details>
+<details class="section">
+<summary><h2>Additional info</h2></summary>
+<h3>Checking package names</h3>
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh --check</code></pre>
+<p>Checks that every package in the lists exists in the repositories, installs nothing. It checks all lists of the distro, not only this machine's: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system/artix/packages">system/artix/packages</a>, <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system/void/packages">system/void/packages</a>. Whether the packages are installed: <a href="shh.html#doctor">shh doctor</a>.</p>
+<h3>How the script works</h3>
+<p>install.sh is the same on every distro. It loads into itself (<code>.</code>, same process) <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/lib/lib.sh">lib/lib.sh</a> and the distro's own steps, <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system">system/DISTRO/distro.sh</a>.</p>
+<p>It runs as separate processes:</p>
+<ul>
+<li><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a>: the VM type or the graphics cards;</li>
+<li><a href="shh.html#config">shh config</a>: what to install, on the first run only;</li>
+<li><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/lib/link.sh">lib/link.sh</a> (<a href="layout.html#link-sh">about it</a>): puts the configs into your home folder;</li>
+<li><code>scripts/vpn setup</code>: the sing-box service, unless sing-box is turned off in shh config.</li>
+</ul>
+<p>It reads these lists (DISTRO = artix or void):</p>
+<ul>
+<li><code>system/DISTRO/packages/common.csv</code>: packages for every machine;</li>
+<li><code>system/DISTRO/packages/CARD.csv</code>: the graphics driver of each card found (Artix: amd, intel, nvidia, nvidia-580xx; Void: amd, intel);</li>
+<li><code>system/DISTRO/services.txt</code>: services started at boot;</li>
+<li><code>components/DISTRO_components.txt</code>: parts you can turn off in shh config.</li>
+</ul>
+<p>It changes these system files. A file it writes whole is renamed to <code>FILE.bak-DATE</code> first, if it had other content; to the others it only adds lines:</p>
+<ul>
+<li><code>/etc/iwd/main.conf</code>: iwd gets IP addresses itself, DNS goes through resolvconf;</li>
+<li><code>/etc/dhcpcd.conf</code>: adds <code>denyinterfaces wl*</code>, dhcpcd only for wired network, wifi is iwd's;</li>
+<li><code>/etc/resolvconf.conf</code>: the DNS servers from shh config;</li>
+<li><code>/etc/modprobe.d/nvidia-modeset.conf</code>: NVIDIA driver only, kernel modesetting for sway;</li>
+<li><code>/etc/modprobe.d/nobeep.conf</code>: the PC speaker off (shh config: nobeep);</li>
+<li><code>/etc/udev/rules.d/90-shh-backlight.rules</code>: the group video may change the screen brightness;</li>
+<li><code>/etc/sudoers.d/shh-power</code>: poweroff, reboot and sleep without a password;</li>
+<li><code>/etc/sudoers.d/dotfiles-temp</code>: passwordless sudo while the script runs, removed when it ends;</li>
+<li>sing-box on: <code>/etc/sing-box/</code> and its service;</li>
+<li>Artix: <code>/etc/pam.d/system-login</code>: adds pam_rundir (XDG_RUNTIME_DIR at login, sway needs it);</li>
+<li>Artix: <code>/etc/pacman.conf</code>: the Arch repos ([extra]), and with the pacman setting in shh config colors and parallel downloads; <code>/etc/makepkg.conf</code>: AUR builds on all CPU cores;</li>
+<li>Void: <code>/etc/alsa/conf.d/</code>: ALSA programs play through pipewire.</li>
+</ul>
+<p>It also sets zsh as your login shell and adds you to the groups for seatd, sound and video.</p>
+<h3>Steps</h3>
+<ol>
+<li><code>check_system</code>: not root, a supported distro, sudo, the lists, internet;</li>
+<li><code>choose_parts</code>: the shh config menu on the first run;</li>
+<li><code>start_log</code>: a copy of the output in <code>~/.local/state/shh/install.log</code> (last run only);</li>
+<li><code>enable_nopasswd</code>: temporary passwordless sudo, so AUR builds don't ask again and again;</li>
+<li><code>distro_prepare</code>: Artix: pacman settings, the Arch repos, the AUR helper; Void: updates xbps and the system;</li>
+<li><code>vmware_clipboard</code>: in VMware only, the clipboard between the host and the VM (Artix; not packaged for Void);</li>
+<li><code>install_packages</code>: the lists, minus the parts turned off;</li>
+<li><code>configure_gpu</code>: the settings the graphics driver needs;</li>
+<li><code>configure_network</code>: iwd, dhcpcd, DNS;</li>
+<li><code>enable_services</code>: services.txt, the sing-box service, the groups;</li>
+<li><code>configure_system</code>: login shell, XDG_RUNTIME_DIR, PC speaker, brightness;</li>
+<li><code>configure_power</code>: poweroff, reboot, sleep without a password;</li>
+<li><code>link_dotfiles</code>: lib/link.sh, copy or link mode from shh config;</li>
+<li><code>leftovers</code>: packages of parts turned off, removed only if you answer y.</li>
+</ol>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">

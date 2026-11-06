@@ -26,48 +26,123 @@
 <main>
 <article>
 <h1>Установка</h1>
-<h2>Дистрибутивы</h2>
-<p>TODO</p>
-<h3>Artix Linux (s6)</h3>
-<p>TODO</p>
-<h3>Void Linux (musl, runit)</h3>
-<p>TODO</p>
-<h2>Опции</h2>
-<p>TODO</p>
-<h3><code>--check</code></h3>
-<p>TODO</p>
-<h3><code>-h, --help</code></h3>
-<p>TODO</p>
-<h2>Что делает install.sh</h2>
-<p>TODO</p>
-<h3><code>check_system</code></h3>
-<p>TODO</p>
-<h3><code>choose_parts</code></h3>
-<p>TODO</p>
-<h3><code>start_log</code></h3>
-<p>TODO</p>
-<h3><code>enable_nopasswd</code></h3>
-<p>TODO</p>
-<h3><code>distro_prepare</code></h3>
-<p>TODO</p>
-<h3><code>vmware_clipboard</code></h3>
-<p>TODO</p>
-<h3><code>install_packages</code></h3>
-<p>TODO</p>
-<h3><code>configure_gpu</code></h3>
-<p>TODO</p>
-<h3><code>configure_network</code></h3>
-<p>TODO</p>
-<h3><code>enable_services</code></h3>
-<p>TODO</p>
-<h3><code>configure_system</code></h3>
-<p>TODO</p>
-<h3><code>configure_power</code></h3>
-<p>TODO</p>
-<h3><code>link_dotfiles</code></h3>
-<p>TODO</p>
-<h3><code>leftovers</code></h3>
-<p>TODO</p>
+<details class="section">
+<summary><h2>Поддерживаемые дистрибутивы</h2></summary>
+<table>
+<thead>
+<tr><th>Дистрибутив</th><th>Init</th><th>Особенность</th></tr>
+</thead>
+<tbody>
+<tr><td>Artix Linux</td><td>s6</td><td><span class="tip" tabindex="0">seatd<span class="tip-text"> (вместо elogind)</span></span></td></tr>
+<tr><td>Void Linux</td><td>runit</td><td><span class="tip" tabindex="0">musl<span class="tip-text"> (библиотека C, вместо glibc)</span></span></td></tr>
+</tbody>
+</table>
+<h3>Скоро</h3>
+<ul>
+<li>Gentoo</li>
+<li>CRUX</li>
+<li>KISS</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2>Перед установкой</h2></summary>
+<ul>
+<li>Пользователь в группе <code>wheel</code>. Всё запускайте от него, <strong>не от root</strong>: от root install.sh не запустится.</li>
+<li>Интернет.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2>Установка на Artix</h2></summary>
+<p>Свежая базовая установка с init s6<span class="star">*<span class="visually-hidden"> (важно)</span></span> и seatd<span class="star">*<span class="visually-hidden"> (важно)</span></span> (выберите <code>seatd-s6</code>). Как установить Artix: <a href="https://wiki.artixlinux.org/Main/Installation">wiki.artixlinux.org/Main/Installation</a>.</p>
+<ol>
+<li>Установите git:
+<pre><code>sudo pacman -S git</code></pre></li>
+<li>Склонируйте репозиторий:
+<pre><code>git clone https://github.com/kiran-why/Shh-dotfiles.git ~/Shh-dotfiles</code></pre></li>
+<li>Установите dotfiles:
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh</code></pre>
+Лог установки: <code>~/.local/state/shh/install.log</code> (только последний запуск, начиная после меню shh config).</li>
+<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="shh.html#config">shh config</a>; <code>shh update</code> скачает его заново:
+<pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
+<li>Перезагрузитесь и войдите на tty1: sway запустится сам.</li>
+</ol>
+</details>
+<details class="section">
+<summary><h2>Установка на Void</h2></summary>
+<p>Свежая базовая установка с <span class="tip" tabindex="0">musl<span class="tip-text"> (библиотека C, вместо glibc)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span>: проверено только на musl. seatd ставится вместе с пакетами (без elogind). Как установить Void: <a href="https://docs.voidlinux.org/installation/index.html">docs.voidlinux.org/installation</a>.</p>
+<ol>
+<li>Обновите xbps<span class="star">*<span class="visually-hidden"> (важно)</span></span>, на свежей системе это нужно сделать первым:
+<pre><code>sudo xbps-install -Su xbps</code></pre></li>
+<li>Установите git:
+<pre><code>sudo xbps-install -S git</code></pre></li>
+<li>Склонируйте репозиторий:
+<pre><code>git clone https://github.com/kiran-why/Shh-dotfiles.git ~/Shh-dotfiles</code></pre></li>
+<li>Установите dotfiles:
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh</code></pre>
+Лог установки: <code>~/.local/state/shh/install.log</code> (только последний запуск, начиная после меню shh config).</li>
+<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="shh.html#config">shh config</a>; <code>shh update</code> скачает его заново:
+<pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
+<li>Перезагрузитесь и войдите на tty1: sway запустится сам.</li>
+</ol>
+</details>
+<details class="section">
+<summary><h2>Дополнительно</h2></summary>
+<h3>Проверка имён пакетов</h3>
+<pre><code>cd ~/Shh-dotfiles
+sh install.sh --check</code></pre>
+<p>Проверяет, что каждый пакет из списков есть в репозиториях, ничего не ставит. Проверяются все списки дистрибутива, а не только нужные этой машине: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system/artix/packages">system/artix/packages</a>, <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system/void/packages">system/void/packages</a>. Установлены ли пакеты, проверяет <a href="shh.html#doctor">shh doctor</a>.</p>
+<h3>Как работает скрипт</h3>
+<p>install.sh один для всех дистрибутивов. Он подключает к себе (<code>.</code>, в том же процессе) <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/lib/lib.sh">lib/lib.sh</a> и шаги своего дистрибутива, <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/system">system/DISTRO/distro.sh</a>.</p>
+<p>Отдельными процессами запускает:</p>
+<ul>
+<li><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a>: тип виртуальной машины или видеокарты;</li>
+<li><a href="shh.html#config">shh config</a>: что ставить, только при первом запуске;</li>
+<li><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/lib/link.sh">lib/link.sh</a> (<a href="layout.html#link-sh">подробнее</a>): кладёт конфиги в домашнюю папку;</li>
+<li><code>scripts/vpn setup</code>: служба sing-box, если sing-box не выключен в shh config.</li>
+</ul>
+<p>Читает списки (DISTRO = artix или void):</p>
+<ul>
+<li><code>system/DISTRO/packages/common.csv</code>: пакеты для любой машины;</li>
+<li><code>system/DISTRO/packages/CARD.csv</code>: драйвер для каждой найденной видеокарты (Artix: amd, intel, nvidia, nvidia-580xx; Void: amd, intel);</li>
+<li><code>system/DISTRO/services.txt</code>: службы, которые запускаются при загрузке;</li>
+<li><code>components/DISTRO_components.txt</code>: части, которые можно выключить в shh config.</li>
+</ul>
+<p>Меняет системные файлы. Файл, который пишется целиком, сначала переименовывается в <code>FILE.bak-DATE</code>, если в нём было другое; в остальные только дописываются строки:</p>
+<ul>
+<li><code>/etc/iwd/main.conf</code>: iwd сам получает IP-адреса, DNS идёт через resolvconf;</li>
+<li><code>/etc/dhcpcd.conf</code>: добавляет <code>denyinterfaces wl*</code>, dhcpcd только для проводной сети, wifi за iwd;</li>
+<li><code>/etc/resolvconf.conf</code>: DNS-серверы из shh config;</li>
+<li><code>/etc/modprobe.d/nvidia-modeset.conf</code>: только с драйвером NVIDIA, kernel modesetting для sway;</li>
+<li><code>/etc/modprobe.d/nobeep.conf</code>: выключает PC speaker (shh config: nobeep);</li>
+<li><code>/etc/udev/rules.d/90-shh-backlight.rules</code>: группа video может менять яркость экрана;</li>
+<li><code>/etc/sudoers.d/shh-power</code>: poweroff, reboot и сон без пароля;</li>
+<li><code>/etc/sudoers.d/dotfiles-temp</code>: sudo без пароля, пока работает скрипт, удаляется в конце;</li>
+<li>если sing-box включён: <code>/etc/sing-box/</code> и его служба;</li>
+<li>Artix: <code>/etc/pam.d/system-login</code>: добавляет pam_rundir (XDG_RUNTIME_DIR при входе, без него sway не запустится);</li>
+<li>Artix: <code>/etc/pacman.conf</code>: репозитории Arch ([extra]), а с настройкой pacman в shh config цвета и параллельные загрузки; <code>/etc/makepkg.conf</code>: сборка из AUR на всех ядрах;</li>
+<li>Void: <code>/etc/alsa/conf.d/</code>: ALSA-программы играют через pipewire.</li>
+</ul>
+<p>Ещё делает zsh оболочкой входа и добавляет вас в группы для seatd, звука и видео.</p>
+<h3>Шаги</h3>
+<ol>
+<li><code>check_system</code>: не root, дистрибутив поддерживается, есть sudo, списки, интернет;</li>
+<li><code>choose_parts</code>: меню shh config при первом запуске;</li>
+<li><code>start_log</code>: копия вывода в <code>~/.local/state/shh/install.log</code> (только последний запуск);</li>
+<li><code>enable_nopasswd</code>: временный sudo без пароля, чтобы сборка из AUR не спрашивала его снова и снова;</li>
+<li><code>distro_prepare</code>: Artix: настройки pacman, репозитории Arch, AUR helper; Void: обновляет xbps и систему;</li>
+<li><code>vmware_clipboard</code>: только в VMware, общий буфер обмена с хостом (Artix; для Void нет пакета);</li>
+<li><code>install_packages</code>: пакеты из списков, кроме выключенных частей;</li>
+<li><code>configure_gpu</code>: настройки, нужные драйверу видеокарты;</li>
+<li><code>configure_network</code>: iwd, dhcpcd, DNS;</li>
+<li><code>enable_services</code>: services.txt, служба sing-box, группы;</li>
+<li><code>configure_system</code>: оболочка входа, XDG_RUNTIME_DIR, PC speaker, яркость;</li>
+<li><code>configure_power</code>: poweroff, reboot, сон без пароля;</li>
+<li><code>link_dotfiles</code>: lib/link.sh, режим copy или link из shh config;</li>
+<li><code>leftovers</code>: пакеты выключенных частей, удаляются, только если ответить y.</li>
+</ol>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">
