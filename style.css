@@ -1,0 +1,131 @@
+/* minimal base; the look comes in the design step */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #666666;
+  --accent: #0000cc;
+}
+
+body {
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: monospace;
+  /* explicit size: with a bare `monospace` browsers fall back to a smaller default (often 13px) */
+  font-size: 1rem;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a {
+  color: var(--accent);
+}
+
+/* site name on the left, language switch on the right */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 2ch;
+}
+
+footer {
+  margin-top: 2rem;
+  color: var(--muted);
+}
+
+/* site tree, drawn like `tree` / nvim-tree: nested lists, lines from borders */
+.tree {
+  margin-top: 2rem;
+  font-size: 1.125rem; /* the tree a bit bigger than the text */
+  white-space: nowrap;
+}
+
+.tree p,
+.tree ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tree li {
+  position: relative;
+  padding-left: 4ch;
+}
+
+/* ├── and └── : the branch to this item */
+.tree li::before {
+  content: "";
+  position: absolute;
+  left: 0.5ch;
+  top: 0;
+  width: 2.5ch;
+  height: 0.75em; /* half of line-height 1.5 */
+  border-left: 1px solid var(--muted);
+  border-bottom: 1px solid var(--muted);
+}
+
+/* │ : the line down to the next sibling */
+.tree li::after {
+  content: "";
+  position: absolute;
+  left: 0.5ch;
+  top: 0.75em;
+  bottom: 0;
+  border-left: 1px solid var(--muted);
+}
+
+.tree li:last-child::after {
+  content: none;
+}
+
+.tree a {
+  text-decoration: none;
+}
+
+/* project folders: click the name to open / close */
+.tree summary {
+  cursor: pointer;
+}
+
+/* home page: the name in the middle, the text below as usual */
+.home h1 {
+  text-align: center;
+}
+
+/* the open page, like the cursor line in vim */
+.tree [aria-current="page"] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* wide screens: tree at the left edge, text centered in the space that is left;
+   narrow: tree after the text */
+@media (min-width: 60rem) {
+  body {
+    max-width: none;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 4ch;
+  }
+
+  header,
+  footer {
+    grid-column: 1 / -1;
+  }
+
+  .page {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    width: 100%;
+    max-width: 80ch;
+  }
+
+  .tree {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 1em; /* level with the first line of the text */
+  }
+}
