@@ -69,16 +69,18 @@ footer .contacts {
   line-height: 1.4;
 }
 
-/* terminal-like: hover and selection invert, focus is a clear white frame */
+/* terminal-like: hover inverts, focus is a clear white frame */
 a:hover {
   background: var(--accent);
   color: var(--bg);
   text-decoration: none;
 }
 
+/* selected text is struck through instead of highlighted */
 ::selection {
-  background: var(--fg);
-  color: var(--bg);
+  background: transparent;
+  color: inherit;
+  text-decoration: line-through;
 }
 
 :focus-visible {
