@@ -1,6 +1,7 @@
 /* dark, monochrome: white, black and grays only, like a terminal */
 :root {
   color-scheme: dark;
+  --red: #c4121f; /* the one alarm color: the status dot */
   --bg: #000000;
   --fg: #c8c8c8;
   --muted: #8a8a8a; /* still 4.5:1 on black for small text */
@@ -22,6 +23,27 @@ body {
   /* narrow screens: one column, footer pushed to the bottom */
   display: flex;
   flex-direction: column;
+}
+
+/* the background: a mirrored kernel panic log (panic.svg) on the right,
+   fading out towards the text. Behind everything, never moves. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* 1620 units high, font 20 units: 64.8rem high makes the log font 0.8rem, like the footer;
+     at the bottom, just above the status line, like the last thing a dying terminal printed;
+     repeated upwards, so it fills any window: boot, panic, boot, panic... a reboot loop */
+  background: url("panic.svg") right 0 bottom 2.5rem / auto 64.8rem repeat-y;
+}
+
+/* narrow screens: the log lies right under the text, so it is fainter there */
+@media (max-width: 60rem) {
+  body::before {
+    opacity: 0.45;
+  }
 }
 
 a {
@@ -239,4 +261,34 @@ a:hover {
 
 .project summary h2 {
   display: inline; /* keep the heading on the marker's line */
+}
+
+/* vim-like status line at the very bottom; every number on it is enforced by the CSP */
+footer .status {
+  position: relative; /* for the stickman */
+  flex-basis: 100%;
+  margin-top: 0.75rem;
+  padding: 0 3.5rem 0 1ch; /* the right end is kept free for the stickman */
+  background: #111;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.status .dot {
+  color: var(--red);
+}
+
+/* a stickman sitting on the top edge of the status line, legs hanging over it (stickman.svg);
+   it is a link: whoever pokes him ends up on the 404 page */
+footer .stickman {
+  position: absolute;
+  bottom: calc(100% - 1.125rem); /* the image's edge line (18 of 64 units from the bottom) on the bar's top */
+  right: 0.5rem;
+  width: 2.5rem;
+  height: 4rem; /* = the 40x64 image */
+  background: url("stickman.svg") center / contain no-repeat;
+}
+
+footer .stickman:hover {
+  background: url("stickman.svg") center / contain no-repeat; /* no inverted block, like other links */
 }

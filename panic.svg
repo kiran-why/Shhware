@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1196 1620">
+<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1196" y2="0"><stop offset="0" stop-color="#383838"/><stop offset="0.35" stop-color="#282828"/><stop offset="0.8" stop-color="#000" stop-opacity="0"/></linearGradient>
+<g transform="translate(1196 0) scale(-1 1)" font-family="monospace" font-size="20" fill="url(#f)" xml:space="preserve">
+<text x="10" y="22">[    0.027888] Linux version 6.12.9-shh (nobody@nowhere) (gcc 14.2.1) #1 SMP PREEMPT_DYNAMIC</text>
+<text x="10" y="52">[    0.050412] Command line: BOOT_IMAGE=/vmlinuz-shh root=/dev/sda2 rw quiet</text>
+<text x="10" y="82">[    0.058897] BIOS-provided physical RAM map:</text>
+<text x="10" y="112">[    0.110917] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable</text>
+<text x="10" y="142">[    0.111502] BIOS-e820: [mem 0x0000000000100000-0x00000000bffdffff] usable</text>
+<text x="10" y="172">[    0.141768] NX (Execute Disable) protection: active</text>
+<text x="10" y="202">[    0.195686] DMI: nobody nobody/nobody, BIOS do-not-look 01/01/1970</text>
+<text x="10" y="232">[    0.200719] tsc: Detected 2894.562 MHz processor</text>
+<text x="10" y="262">[    0.234064] Memory: 8048112K/8388084K available (18432K kernel code)</text>
+<text x="10" y="292">[    0.271140] shh: someone is watching</text>
+<text x="10" y="322">[    0.273786] ACPI: Core revision 20240827</text>
+<text x="10" y="352">[    0.296651] PCI: Using configuration type 1 for base access</text>
+<text x="10" y="382">[    0.338919] clocksource: Switched to clocksource tsc</text>
+<text x="10" y="412">[    0.366150] usb 1-1: new high-speed USB device number 2 using xhci_hcd</text>
+<text x="10" y="442">[    0.409709] uvcvideo: Found UVC 1.00 device &lt;unnamed&gt; (0000:0000)</text>
+<text x="10" y="472">[    0.419307] uvcvideo: camera turned on by pid 0</text>
+<text x="10" y="502">[    0.433740] input: Integrated Microphone as /devices/pci0000:00/0000:00:1f.3/sound/card0/input7</text>
+<text x="10" y="532">[    0.440575] snd_hda_intel: microphone: recording, nobody asked</text>
+<text x="10" y="562">[    0.471050] EXT4-fs (sda2): mounted filesystem with ordered data mode</text>
+<text x="10" y="592">[    0.526495] audit: type=1400 apparmor=&quot;DENIED&quot; operation=&quot;open&quot; name=&quot;/home/you&quot; comm=&quot;shh&quot;</text>
+<text x="10" y="622">[    0.562002] shh: they know you are here</text>
+<text x="10" y="652">[    0.608500] watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [eyes:666]</text>
+<text x="10" y="682">[    0.631643] BUG: kernel NULL pointer dereference, address: 0000000000000000</text>
+<text x="10" y="712">[    0.676460] #PF: supervisor read access in kernel mode</text>
+<text x="10" y="742">[    0.682739] #PF: error_code(0x0000) - not-present page</text>
+<text x="10" y="772">[    0.700352] PGD 0 P4D 0</text>
+<text x="10" y="802">[    0.740871] Oops: 0000 [#1] PREEMPT SMP NOPTI</text>
+<text x="10" y="832">[    0.784468] CPU: 0 PID: 1 Comm: shh Not tainted 6.12.9-shh #1</text>
+<text x="10" y="862">[    0.809889] RIP: 0010:__watch_task+0x2a/0x90</text>
+<text x="10" y="892">[    0.815335] Code: 48 8b 07 48 85 c0 74 1b 0f 1f 44 00 00 48 8b 50 08</text>
+<text x="10" y="922">[    0.831485] RSP: 0018:ffffb3c140013e58 EFLAGS: 00010246</text>
+<text x="10" y="952">[    0.844237] RAX: 0000000000000000 RBX: ffff9e8a00a3c000 RCX: 0000000000000000</text>
+<text x="10" y="982">[    0.861252] RDX: 0000000000000001 RSI: 0000000000000000 RDI: 0000000000000000</text>
+<text x="10" y="1012">[    0.909860] RBP: ffffb3c140013e78 R08: 0000000000000000 R09: ffffffffffffffff</text>
+<text x="10" y="1042">[    0.921989] R13: ffff9e8a00a3c000 R14: 0000000000000000 R15: 0000000000000000</text>
+<text x="10" y="1072">[    0.975196] CR2: 0000000000000000 CR3: 000000002a210000 CR4: 00000000003506f0</text>
+<text x="10" y="1102">[    1.027983] shh: do not turn around</text>
+<text x="10" y="1132">[    1.031459] Call Trace:</text>
+<text x="10" y="1162">[    1.054312]  &lt;TASK&gt;</text>
+<text x="10" y="1192">[    1.083917]  ? __die+0x23/0x70</text>
+<text x="10" y="1222">[    1.085521]  ? page_fault_oops+0x171/0x4e0</text>
+<text x="10" y="1252">[    1.111119]  ? stare_into_you+0x11/0x40</text>
+<text x="10" y="1282">[    1.165523]  ? exc_page_fault+0x7f/0x180</text>
+<text x="10" y="1312">[    1.172423]  ? asm_exc_page_fault+0x26/0x30</text>
+<text x="10" y="1342">[    1.208315]  ? __watch_task+0x2a/0x90</text>
+<text x="10" y="1372">[    1.215764]  kernel_init+0x1a/0x130</text>
+<text x="10" y="1402">[    1.250571]  ret_from_fork+0x34/0x50</text>
+<text x="10" y="1432">[    1.304310]  &lt;/TASK&gt;</text>
+<text x="10" y="1462">[    1.316652] ---[ end trace 0000000000000000 ]---</text>
+<text x="10" y="1492">[    1.317346] Out of memory: Killed process 1312 (you) total-vm:0kB</text>
+<text x="10" y="1522">[    1.322539] shh: it is still here</text>
+<text x="10" y="1552">[    1.355018] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000009</text>
+<text x="10" y="1582">[    1.356262] Kernel Offset: 0x2a000000 from 0xffffffff81000000</text>
+<text x="10" y="1612">[    1.361535] ---[ end Kernel panic - not syncing: nobody was watching. or were they ]---</text>
+</g></svg>
