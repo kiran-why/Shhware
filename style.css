@@ -1,12 +1,15 @@
-/* minimal base; the look comes in the design step */
+/* dark, monochrome: white, black and grays only, like a terminal */
 :root {
-  --bg: #ffffff;
-  --fg: #111111;
-  --muted: #666666;
-  --accent: #0000cc;
+  color-scheme: dark;
+  --bg: #000000;
+  --fg: #c8c8c8;
+  --muted: #8a8a8a; /* still 4.5:1 on black for small text */
+  --accent: #ffffff;
 }
 
 body {
+  box-sizing: border-box;
+  min-height: 100vh;
   max-width: 80ch;
   margin: 0 auto;
   padding: 1rem;
@@ -16,9 +19,18 @@ body {
   line-height: 1.5;
   background: var(--bg);
   color: var(--fg);
+  /* narrow screens: one column, footer pushed to the bottom */
+  display: flex;
+  flex-direction: column;
 }
 
 a {
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
   color: var(--accent);
 }
 
@@ -30,9 +42,48 @@ header {
   gap: 0 2ch;
 }
 
+/* small, one line, at the bottom of the window */
 footer {
-  margin-top: 2rem;
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 3ch;
+  font-size: 0.8rem;
   color: var(--muted);
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--muted);
+}
+
+/* hidden on screen, still read by lynx and screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* home page logo: 72 columns of block characters, shrinks to fit the column */
+.logo {
+  width: fit-content;
+  max-width: 100%;
+  margin: 2rem auto;
+  color: var(--accent);
+  font-size: min(1rem, calc((100vw - 2rem) / 45));
+  line-height: 1.15; /* block characters touch, no gaps between rows */
+}
+
+/* home page: the slogan under the logo */
+.slogan {
+  text-align: center;
 }
 
 /* site tree, drawn like `tree` / nvim-tree: nested lists, lines from borders */
@@ -89,11 +140,6 @@ footer {
   cursor: pointer;
 }
 
-/* home page: the name in the middle, the text below as usual */
-.home h1 {
-  text-align: center;
-}
-
 /* the open page, like the cursor line in vim */
 .tree [aria-current="page"] {
   background: var(--fg);
@@ -107,12 +153,17 @@ footer {
     max-width: none;
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
     column-gap: 4ch;
   }
 
   header,
   footer {
     grid-column: 1 / -1;
+  }
+
+  footer {
+    grid-row: 3;
   }
 
   .page {
@@ -128,4 +179,18 @@ footer {
     grid-row: 2;
     margin-top: 1em; /* level with the first line of the text */
   }
+
+  /* the text column here is the window minus the tree and the gap */
+  .logo {
+    font-size: min(1rem, calc((100vw - 22rem) / 45));
+  }
+}
+
+/* projects page: click a project name to hide / show its description */
+.project summary {
+  cursor: pointer;
+}
+
+.project summary h2 {
+  display: inline; /* keep the heading on the marker's line */
 }
