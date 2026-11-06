@@ -1,28 +1,33 @@
 <!DOCTYPE html>
+<!-- you read the source. good. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Philosophy — Shhware</title>
+<title>About us — Shhware</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <!-- TODO: absolute hreflang URLs after deploy -->
-<link rel="alternate" hreflang="en" href="philosophy.html">
-<link rel="alternate" hreflang="ru" href="../ru/philosophy.html">
+<link rel="alternate" hreflang="en" href="about.html">
+<link rel="alternate" hreflang="ru" href="../ru/about.html">
 </head>
 <body>
 <header>
-<p><a href="index.html">shhware</a></p>
-<p>English · <a href="../ru/philosophy.html" hreflang="ru">Russian</a></p>
+<p><a href="index.html">Shhware</a></p>
+<p>English · <a href="../ru/about.html" hreflang="ru">Russian</a></p>
 </header>
 <div class="page">
 <main>
 <article>
-<h1>Shhware Philosophy</h1>
+<h1>About us</h1>
+<h2>Shhware Philosophy</h2>
 <p><time datetime="2026-11-01">Nov 1, 2026</time> · @kiranchick</p>
-<h2>What Shhware is</h2>
+<h3>What Shhware is</h3>
 <p>Shhware is software that stays quiet: it starts fast, uses little memory and CPU, and works through the terminal. Many projects today ship heavy, decorated GUIs; Shhware goes the other way.</p>
 <p>Every Shhware project follows the rules below.</p>
-<h2>Core principles</h2>
+<h3>Core principles</h3>
 <ol>
 <li><strong>No useless GUI.</strong> Terminal first. A GUI is allowed only where there is no way around it: web pages, video, images.</li>
 <li><strong>Free software.</strong> Anyone can use, study, share and modify it.</li>
@@ -36,30 +41,34 @@
 </main>
 </div>
 <nav class="tree" aria-label="site">
-<p><a href="index.html">shhware/</a></p>
+<p><a href="index.html">Shhware/</a></p>
 <ul>
-<li><a href="projects/index.html">projects/</a>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="projects/index.html">Projects/</a>
 <ul>
-<li><details><summary>shh-dotfiles/</summary>
+<li><details><summary>Shh-dotfiles/</summary>
 <ul>
-<li><a href="projects/shh-dotfiles/index.html">index</a></li>
-<li><a href="projects/shh-dotfiles/install.html">install</a></li>
-<li><a href="projects/shh-dotfiles/shh.html">shh</a></li>
-<li><a href="projects/shh-dotfiles/components.html">components</a></li>
-<li><a href="projects/shh-dotfiles/desktop.html">desktop</a></li>
-<li><a href="projects/shh-dotfiles/keybinds.html">keybinds</a></li>
-<li><a href="projects/shh-dotfiles/layout.html">layout</a></li>
-<li><a href="projects/shh-dotfiles/known-issues.html">known-issues</a></li>
+<li><a href="projects/shh-dotfiles/index.html">Index</a></li>
+<li><a href="projects/shh-dotfiles/install.html">Install</a></li>
+<li><a href="projects/shh-dotfiles/shh.html">Shh</a></li>
+<li><a href="projects/shh-dotfiles/components.html">Components</a></li>
+<li><a href="projects/shh-dotfiles/desktop.html">Desktop</a></li>
+<li><a href="projects/shh-dotfiles/keybinds.html">Keybinds</a></li>
+<li><a href="projects/shh-dotfiles/layout.html">Layout</a></li>
+<li><a href="projects/shh-dotfiles/known-issues.html">Known-issues</a></li>
 </ul>
 </details></li>
 </ul>
 </li>
-<li><span aria-current="page">philosophy</span></li>
-<li><a href="news.html">news</a></li>
-<li><a href="contacts.html">contacts</a></li>
+<li><span aria-current="page">About</span></li>
 </ul>
 </nav>
 <footer>
+<pre class="contacts" aria-label="Contacts">$ finger kiranchick
+Login: kiranchick
+Mail:   <a href="mailto:kiranchick@proton.me">kiranchick@proton.me</a>
+GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
+No Plan.</pre>
 <p>Site repository: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Site license: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, except the logo</p>
 </footer>

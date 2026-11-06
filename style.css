@@ -61,6 +61,45 @@ footer a {
   color: var(--muted);
 }
 
+/* contacts as `finger` output, its own block above the repo and the license */
+footer .contacts {
+  flex-basis: 100%;
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem; /* explicit: a <pre> would fall back to the small monospace default */
+  line-height: 1.4;
+}
+
+/* terminal-like: hover and selection invert, focus is a clear white frame */
+a:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* wiki: back on the left, next on the right, a line above */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2ch;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--muted);
+}
+
+.steps a[rel="next"] {
+  margin-left: auto;
+}
+
 /* hidden on screen, still read by lynx and screen readers */
 .visually-hidden {
   position: absolute;
@@ -79,6 +118,11 @@ footer a {
   color: var(--accent);
   font-size: min(1rem, calc((100vw - 2rem) / 45));
   line-height: 1.15; /* block characters touch, no gaps between rows */
+}
+
+/* 404: no tree, one centered column */
+.solo {
+  grid-column: 1 / -1;
 }
 
 /* home page: the slogan under the logo */

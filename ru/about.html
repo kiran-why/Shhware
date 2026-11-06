@@ -1,29 +1,34 @@
 <!DOCTYPE html>
+<!-- you read the source. good. -->
 <html lang="ru">
 <!-- TODO: проверить перевод -->
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Философия — Shhware</title>
+<title>О нас — Shhware</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <!-- TODO: absolute hreflang URLs after deploy -->
-<link rel="alternate" hreflang="en" href="../en/philosophy.html">
-<link rel="alternate" hreflang="ru" href="philosophy.html">
+<link rel="alternate" hreflang="en" href="../en/about.html">
+<link rel="alternate" hreflang="ru" href="about.html">
 </head>
 <body>
 <header>
-<p><a href="index.html">shhware</a></p>
-<p><a href="../en/philosophy.html" hreflang="en" lang="en">English</a> · <span lang="en">Russian</span></p>
+<p><a href="index.html">Shhware</a></p>
+<p><a href="../en/about.html" hreflang="en" lang="en">English</a> · <span lang="en">Russian</span></p>
 </header>
 <div class="page">
 <main>
 <article>
-<h1>Философия Shhware</h1>
+<h1>О нас</h1>
+<h2>Философия Shhware</h2>
 <p><time datetime="2026-11-01">1 ноября 2026</time> · @kiranchick</p>
-<h2>Что такое Shhware</h2>
+<h3>Что такое Shhware</h3>
 <p>Shhware — это тихий софт: он быстро запускается, потребляет мало памяти и процессора и работает через терминал. Многие проекты сегодня выпускают тяжёлые, разукрашенные GUI; Shhware идёт другим путём.</p>
 <p>Каждый проект Shhware следует правилам ниже.</p>
-<h2>Основные принципы</h2>
+<h3>Основные принципы</h3>
 <ol>
 <li><strong>Никаких бесполезных GUI.</strong> Терминал прежде всего. GUI допустим только там, где без него не обойтись: веб-страницы, видео, изображения.</li>
 <li><strong>Свободный софт.</strong> Любой может его использовать, изучать, распространять и изменять.</li>
@@ -37,30 +42,34 @@
 </main>
 </div>
 <nav class="tree" aria-label="сайт">
-<p><a href="index.html">shhware/</a></p>
+<p><a href="index.html">Shhware/</a></p>
 <ul>
-<li><a href="projects/index.html">projects/</a>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="projects/index.html">Projects/</a>
 <ul>
-<li><details><summary>shh-dotfiles/</summary>
+<li><details><summary>Shh-dotfiles/</summary>
 <ul>
-<li><a href="projects/shh-dotfiles/index.html">index</a></li>
-<li><a href="projects/shh-dotfiles/install.html">install</a></li>
-<li><a href="projects/shh-dotfiles/shh.html">shh</a></li>
-<li><a href="projects/shh-dotfiles/components.html">components</a></li>
-<li><a href="projects/shh-dotfiles/desktop.html">desktop</a></li>
-<li><a href="projects/shh-dotfiles/keybinds.html">keybinds</a></li>
-<li><a href="projects/shh-dotfiles/layout.html">layout</a></li>
-<li><a href="projects/shh-dotfiles/known-issues.html">known-issues</a></li>
+<li><a href="projects/shh-dotfiles/index.html">Index</a></li>
+<li><a href="projects/shh-dotfiles/install.html">Install</a></li>
+<li><a href="projects/shh-dotfiles/shh.html">Shh</a></li>
+<li><a href="projects/shh-dotfiles/components.html">Components</a></li>
+<li><a href="projects/shh-dotfiles/desktop.html">Desktop</a></li>
+<li><a href="projects/shh-dotfiles/keybinds.html">Keybinds</a></li>
+<li><a href="projects/shh-dotfiles/layout.html">Layout</a></li>
+<li><a href="projects/shh-dotfiles/known-issues.html">Known-issues</a></li>
 </ul>
 </details></li>
 </ul>
 </li>
-<li><span aria-current="page">philosophy</span></li>
-<li><a href="news.html">news</a></li>
-<li><a href="contacts.html">contacts</a></li>
+<li><span aria-current="page">About</span></li>
 </ul>
 </nav>
 <footer>
+<pre class="contacts" aria-label="Контакты">$ finger kiranchick
+Login: kiranchick
+Mail:   <a href="mailto:kiranchick@proton.me">kiranchick@proton.me</a>
+GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
+No Plan.</pre>
 <p>Репозиторий сайта: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Лицензия сайта: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, кроме логотипа</p>
 </footer>

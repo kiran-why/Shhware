@@ -1,5 +1,5 @@
 #!/bin/sh
-# Checks the site: en/ru mirror, relative links, lang/title/h1, language links.
+# Checks the site: en/ru mirror, relative links, lang/title/h1, CSP + no-referrer, language links.
 # Usage: sh tools/check.sh   (prints problems, exits 1 if there are any)
 # shortcut: attributes are found per tag after splitting on '<', so a tag must
 # stay on one line; switch to a real HTML parser if pages ever break that.
@@ -52,6 +52,9 @@ check() {
         # 3. lang, title, exactly one h1
         grep -q '<html lang="[a-z][a-z]*"' "$f" || echo "$f: no lang"
         grep -q '<title>[^<]' "$f" || echo "$f: no title"
+        # the browser must block scripts and third-party loads, and send no referrer
+        grep -q "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'none';" "$f" || echo "$f: no CSP"
+        grep -q '<meta name="referrer" content="no-referrer">' "$f" || echo "$f: no no-referrer"
         n=$(tr '<' '\n' < "$f" | grep -c '^h1[ >]')
         [ "$n" -eq 1 ] || echo "$f: $n h1"
 

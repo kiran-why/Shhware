@@ -1,21 +1,32 @@
 <!DOCTYPE html>
+<!-- you read the source. good. -->
 <!-- работает, только если сайт лежит в корне домена; если сайт на /<repo>/ — поправить пути -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Shhware</title>
 <link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<main>
-<h1>404</h1>
-<p>Page not found.</p>
-<p lang="ru">Страница не найдена.</p>
-<ul>
-<li><a href="/en/" hreflang="en">Home</a></li>
-<li><a href="/ru/" hreflang="ru" lang="ru">Главная</a></li>
-</ul>
+<main class="solo">
+<pre class="logo" aria-hidden="true">
+          █▄         █▄
+          █▓▌        █▓▌
+   ▄▄██▄ ▐▓▓█░▄▓▄   ▐▓▓█░▄▓▄   ▀░▄▄             ▄██▄    ▀░▄▄      ▄▄█▄▄
+  ▓▓  ▀▀ ▐▒▒ ▀ ▀██  ▐▒▒ ▀ ▀██   ▐▒▌        ▓▓▌ ▀  ▀█▌    ▓▓▌▄▄   ▓█▀ ▀▓▓
+   ▀▀▀▄   ░░▌   ▐▓▌  ░░▌   ▐▓▌  ▐░░ ░▀█▄▄ ▐▒▒   ▄▄█▓█   ▐▒▒▀▄▓█ ▐▒▌  ▄▒▀
+▐█▌  ░█░  ██▓  ▄██   ██▓  ▄██    ██▄  ▓▒▌ ░░▌  ██▀ ▀▓▌  ░░▌ ▀░▀  ▀░░▀
+ █░▄██▀   ▐█▌  █▀    ▐█▌  █▀      ░██▄░█░▄██   ▓█▄▄▒▒  ▀██        ▀█▄  ▄
+  ▀▀░      ▀    ▀     ▀    ▀        ▀▀ ░▀▀      ▀▀▀▀      ▀          ▀▀
+</pre>
+<h1 class="visually-hidden">404</h1>
+<p class="slogan">404 · Connection reset. Nobody was watching.</p>
+<p class="slogan" lang="ru">Соединение сброшено. Никто не смотрел.</p>
+<p class="slogan"><a href="/en/" hreflang="en">Home</a> · <a href="/ru/" hreflang="ru" lang="ru">Главная</a></p>
 </main>
 </body>
 </html>
