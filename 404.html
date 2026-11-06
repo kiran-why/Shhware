@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- you read the source. good. -->
-<!-- работает, только если сайт лежит в корне домена; если сайт на /<repo>/ — поправить пути -->
 <html lang="en">
+<!-- работает, только если сайт лежит в корне домена; если сайт на /<repo>/ — поправить пути -->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
@@ -12,24 +12,60 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<main class="solo">
+<header>
+<p><a href="/en/index.html">Shhware</a></p>
+<p><a href="/en/" hreflang="en">English</a> · <a href="/ru/" hreflang="ru">Russian</a></p>
+</header>
+<div class="page">
+<main class="home">
 <pre class="logo" aria-hidden="true">
-          █▄         █▄
-          █▓▌        █▓▌
-   ▄▄██▄ ▐▓▓█░▄▓▄   ▐▓▓█░▄▓▄   ▀░▄▄             ▄██▄    ▀░▄▄      ▄▄█▄▄
-  ▓▓  ▀▀ ▐▒▒ ▀ ▀██  ▐▒▒ ▀ ▀██   ▐▒▌        ▓▓▌ ▀  ▀█▌    ▓▓▌▄▄   ▓█▀ ▀▓▓
-   ▀▀▀▄   ░░▌   ▐▓▌  ░░▌   ▐▓▌  ▐░░ ░▀█▄▄ ▐▒▒   ▄▄█▓█   ▐▒▒▀▄▓█ ▐▒▌  ▄▒▀
-▐█▌  ░█░  ██▓  ▄██   ██▓  ▄██    ██▄  ▓▒▌ ░░▌  ██▀ ▀▓▌  ░░▌ ▀░▀  ▀░░▀
- █░▄██▀   ▐█▌  █▀    ▐█▌  █▀      ░██▄░█░▄██   ▓█▄▄▒▒  ▀██        ▀█▄  ▄
-  ▀▀░      ▀    ▀     ▀    ▀        ▀▀ ░▀▀      ▀▀▀▀      ▀          ▀▀
+       ▄▓█       ▄▄█▄▄          ▄▓█
+     ▄▓▀▐▓▌    ▓█▀  ▀▓▓       ▄▓▀▐▓▌
+    ▓▓▀ ▐▒▌   ▐▒▌    ▐▒▌     ▓▓▀ ▐▒▌
+  ▐█▀   ▐░░   ░░▌  ▄ ▐░░   ▐█▀   ▐░░
+  ▐█▄▄▄▄▓▒█▄ ▐██  ▀  ▐█▌   ▐█▄▄▄▄▓▒█▄
+        ░░▌   ▓█▄  ▄▒▒           ░░▌
+        ██▓    ▀▀██▀▀            ██▓
+        ▐█▌                      ▐█▌
+         ▀                        ▀
 </pre>
 <h1 class="visually-hidden">404</h1>
-<p class="slogan">404 · Connection reset. Nobody was watching.</p>
-<p class="slogan" lang="ru">Соединение сброшено. Никто не смотрел.</p>
-<p class="slogan"><a href="/en/" hreflang="en">Home</a> · <a href="/ru/" hreflang="ru" lang="ru">Главная</a></p>
+<p class="dead"><img src="/dead.svg" alt=""></p>
+<p class="slogan">Connection reset. Nobody was watching.</p>
 </main>
+</div>
+<nav class="tree" aria-label="site">
+<p><a href="/en/index.html">Shhware/</a></p>
+<ul>
+<li><a href="/en/news.html">NEWS</a></li>
+<li><a href="/en/projects/index.html">Projects/</a>
+<ul>
+<li><details><summary>Shh-dotfiles/</summary>
+<ul>
+<li><a href="/en/projects/shh-dotfiles/index.html">Index</a></li>
+<li><a href="/en/projects/shh-dotfiles/install.html">Install</a></li>
+<li><a href="/en/projects/shh-dotfiles/shh.html">Shh</a></li>
+<li><a href="/en/projects/shh-dotfiles/components.html">Components</a></li>
+<li><a href="/en/projects/shh-dotfiles/desktop.html">Desktop</a></li>
+<li><a href="/en/projects/shh-dotfiles/keybinds.html">Keybinds</a></li>
+<li><a href="/en/projects/shh-dotfiles/layout.html">Layout</a></li>
+<li><a href="/en/projects/shh-dotfiles/known-issues.html">Known-issues</a></li>
+</ul>
+</details></li>
+</ul>
+</li>
+<li><a href="/en/about.html">About</a></li>
+</ul>
+</nav>
 <footer>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="/404.html"><span class="visually-hidden">Someone is sitting here</span></a></p>
+<pre class="contacts" aria-label="Contacts">$ finger kiranchick
+Login: kiranchick
+Mail:   <a href="mailto:kiranchick@proton.me">kiranchick@proton.me</a>
+GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
+No Plan.</pre>
+<p>Site repository: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
+<p>Site license: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, except the logo</p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none</p>
 </footer>
 </body>
 </html>

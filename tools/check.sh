@@ -7,7 +7,7 @@
 cd "$(dirname "$0")/.." || exit 1
 
 pages() {
-    find . -name '*.html' ! -path './claude/*' ! -path './tools/*'
+    find . -name '*.html'
 }
 
 # attr NAME FILE: every value of NAME="..." in FILE, one per line

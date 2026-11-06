@@ -144,9 +144,14 @@ a:hover {
   line-height: 1.15; /* block characters touch, no gaps between rows */
 }
 
-/* 404: no tree, one centered column */
-.solo {
-  grid-column: 1 / -1;
+/* 404: the dead stickman under the big 404 */
+.dead {
+  text-align: center;
+}
+
+.dead img {
+  width: 12rem;
+  max-width: 100%;
 }
 
 /* home page: the slogan under the logo */
