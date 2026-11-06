@@ -25,7 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* the background: a mirrored kernel panic log (panic.svg) on the right,
+/* the background: a mirrored kernel panic log (img/panic.svg) on the right,
    fading out towards the text. Behind everything, never moves. */
 body::before {
   content: "";
@@ -36,7 +36,7 @@ body::before {
   /* 1620 units high, font 20 units: 64.8rem high makes the log font 0.8rem, like the footer;
      at the bottom, just above the status line, like the last thing a dying terminal printed;
      repeated upwards, so it fills any window: boot, panic, boot, panic... a reboot loop */
-  background: url("panic.svg") right 0 bottom 2.5rem / auto 64.8rem repeat-y;
+  background: url("img/panic.svg") right 0 bottom 2.5rem / auto 64.8rem repeat-y;
 }
 
 /* narrow screens: the log lies right under the text, so it is fainter there */
@@ -283,7 +283,7 @@ footer .status {
   color: var(--red);
 }
 
-/* a stickman sitting on the top edge of the status line, legs hanging over it (stickman.svg);
+/* a stickman sitting on the top edge of the status line, legs hanging over it (img/stickman.svg);
    it is a link: whoever pokes him ends up on the 404 page */
 footer .stickman {
   position: absolute;
@@ -291,9 +291,9 @@ footer .stickman {
   right: 0.5rem;
   width: 2.5rem;
   height: 4rem; /* = the 40x64 image */
-  background: url("stickman.svg") center / contain no-repeat;
+  background: url("img/stickman.svg") center / contain no-repeat;
 }
 
 footer .stickman:hover {
-  background: url("stickman.svg") center / contain no-repeat; /* no inverted block, like other links */
+  background: url("img/stickman.svg") center / contain no-repeat; /* no inverted block, like other links */
 }
