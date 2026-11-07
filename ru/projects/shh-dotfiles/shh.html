@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Команда shh — Shh-dotfiles — Shhware</title>
+<title>Команды shh — Shh-dotfiles — Shhware</title>
 <link rel="stylesheet" href="../../../style.css">
 <link rel="icon" href="../../../img/favicon.svg" type="image/svg+xml">
 <!-- TODO: absolute hreflang URLs after deploy -->
@@ -25,33 +25,79 @@
 </nav>
 <main>
 <article>
-<h1>Команда shh</h1>
-<h2 id="config"><code>shh config</code></h2>
-<p>TODO</p>
-<h3>settings</h3>
-<p>TODO</p>
-<h3>features</h3>
-<p>TODO</p>
-<h3>misc</h3>
-<p>TODO</p>
-<h2><code>shh update</code></h2>
-<p>TODO</p>
-<h2 id="doctor"><code>shh doctor</code></h2>
-<p>TODO</p>
+<h1>Команды shh</h1>
+<p>Скрипт: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/shh"><code>scripts/shh</code></a> в репозитории, после установки — <code>~/.local/bin/shh</code>. Запускайте от своего пользователя, <strong>не от root</strong>: от root shh не работает.</p>
+<details class="section">
+<summary><h2 id="config">shh config</h2></summary>
+<p>Меню: какие части системы оставить, а какие убрать. <a href="install.html">install.sh</a> сам открывает его при первом запуске, пока нет <code>~/.config/shh/config</code>. Чтобы поменять выбор потом:</p>
+<pre><code>shh config</code></pre>
+<p>Каждое изменение сохраняется сразу и применяется при следующем <a href="#update">shh update</a> (до первой установки: <code>sh install.sh</code>). У выключенной части не ставятся её пакеты, файлы и сервисы.</p>
+<h3>settings: параметры установки</h3>
+<ul>
+<li><code>mode</code>: copy (по умолчанию: конфиги скопированы, репозиторий можно удалить) или link (ссылки на репозиторий, ваши правки попадают в него);</li>
+<li><code>layouts</code>: раскладки клавиатуры, первая — основная (us,ru);</li>
+<li><code>switch layout</code>: клавиши переключения раскладки: Alt+Shift (по умолчанию), Ctrl+Shift, Super+Space, Caps Lock, левый Alt+левый Shift;</li>
+<li><code>dns</code>: DHCP (от сети, по умолчанию), Cloudflare, Quad9, Google; любой другой — вручную в файле настроек;</li>
+<li><code>graphics</code>: auto (по видеокартам, которые находит <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a>, рекомендуется) или драйверы вручную: AMD, Intel, NVIDIA, Nouveau (свободный драйвер NVIDIA; NVIDIA и Nouveau вместе нельзя);</li>
+<li><code>editor</code>: Vim (по умолчанию, меньше зависимостей) или Neovim, вид, настройки и клавиши одинаковые;</li>
+<li><code>file manager</code>: Broot (по умолчанию, папки деревом) или Yazi (превью, вкладки);</li>
+<li>только Artix: <code>aur helper</code>: yay (по умолчанию) или paru; <code>pacman</code>: цвета и параллельные загрузки, сборка из AUR на всех ядрах (вкл.);</li>
+<li><code>nobeep</code>: выключить пищалку материнской платы (вкл.);</li>
+<li><code>maxhz</code>: максимальная частота обновления каждого экрана (вкл.);</li>
+<li><code>xwayland</code>: программы для X11, после перезахода (выкл.).</li>
+</ul>
+<h3>features: инструменты окружения</h3>
+<p>Части окружения, которые можно выключить: <a href="components.html#features">Компоненты: features</a>.</p>
+<h3>misc: дополнительные пакеты</h3>
+<p>Дополнительные программы: <a href="components.html#misc">Компоненты: misc</a>.</p>
+<h3>Файл настроек</h3>
+<p>Выбор хранится в <code>~/.config/shh/config</code>, по одной строке <code>NAME=VALUE</code>; его можно править руками. Нет строки — значение по умолчанию. Файла нет в репозитории, поэтому shh update сохраняет ваш выбор.</p>
+</details>
+<details class="section">
+<summary><h2 id="update">shh update</h2></summary>
+<pre><code>shh update</code></pre>
+<p>Обновляет систему и конфиги: запускает <a href="install.html">install.sh</a> из свежей копии репозитория. Выбор из <a href="#config">shh config</a> сохраняется, меню снова не открывается.</p>
+<ul>
+<li>режим copy: клонирует репозиторий (<code>git clone --depth 1</code>, только последний коммит) во временную папку, запускает оттуда <code>install.sh</code> и удаляет папку, когда он закончит;</li>
+<li>режим link: <code>git pull</code> в репозитории, на который указывают ссылки, потом его <code>install.sh</code>. Если в репозитории есть локальные изменения, pull останавливается (только fast-forward).</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="doctor">shh doctor</h2></summary>
+<pre><code>shh doctor</code></pre>
+<p>Проверяет, что всё, что настроила установка, на месте, и говорит, чего не хватает, обычно с подсказкой, как исправить (<code>sh install.sh</code> или <code>sh lib/link.sh</code>). Учитывает выбор в <a href="#config">shh config</a>: выключенную часть не ищет. В конце — число проблем или «all good».</p>
 <h3>services</h3>
-<p>TODO</p>
+<p>Каждый сервис из <code>services.txt</code> запущен (s6 на Artix, runit на Void).</p>
 <h3>files</h3>
-<p>TODO</p>
+<p>Каждый файл, который поставил <a href="layout.html#link-sh">lib/link.sh</a> (список: <code>~/.local/state/shh/installed</code>), на месте; битая ссылка считается отсутствующим файлом.</p>
 <h3>packages</h3>
-<p>TODO</p>
+<p>Установлен каждый пакет из <code>common.csv</code> и из списков драйверов видеокарты (по карте или по выбору в settings: graphics).</p>
 <h3>session</h3>
-<p>TODO</p>
-<h2><code>shh color OLD NEW</code></h2>
-<p>TODO</p>
-<h2><code>shh uninstall [-n]</code></h2>
-<p>TODO</p>
-<h2><code>shh help</code></h2>
-<p>TODO</p>
+<p>То, что нужно sway без elogind: задана <code>XDG_RUNTIME_DIR</code>, и вы в группах seat, audio, video (Void: _seatd, audio, video). Если вас только что добавили в группу, выйдите и войдите снова.</p>
+</details>
+<details class="section">
+<summary><h2 id="uninstall">shh uninstall</h2></summary>
+<pre><code>shh uninstall
+shh uninstall -n</code></pre>
+<p>Удаляет то, что поставил <a href="layout.html#link-sh">lib/link.sh</a> (конфиги, скрипты, сам shh, <code>~/.local/share/shh</code>), и возвращает ваши старые файлы из <code>NAME.bak-DATE</code> (самый старый, из времени до dotfiles). Файл, который вы меняли после установки, остаётся, с предупреждением. Опустевшие папки удаляются. <code>-n</code>: только показывает, что будет сделано, ничего не меняет.</p>
+<h3>Что остаётся</h3>
+<p>Пакеты, сервисы, login shell (zsh), группы и системные файлы в <code>/etc</code><span class="star">*<span class="visually-hidden"> (важно)</span></span>: если откатить их по ошибке, вход сломается (без seatd sway не запустится). shh uninstall печатает их список с командами, чтобы вручную откатить только то, что нужно. Также остаются <code>~/.config/shh/config</code> и папка репозитория, если вы её оставили.</p>
+</details>
+<details class="section">
+<summary><h2 id="color">shh color</h2></summary>
+<pre><code>shh color OLD NEW</code></pre>
+<p>Меняет цвет во всех установленных конфигах и скриптах, например <code>shh color d7263d ff0000</code>. Цвет — 6 шестнадцатеричных цифр, <code>#</code> можно не писать, регистр не важен. Палитра перечислена в <code>config/foot/foot.ini</code>.</p>
+<ul>
+<li>NEW уже где-то используется: предупреждение, с этого момента это один цвет, и меняться они будут вместе;</li>
+<li>режим copy: следующий shh update вернёт цвета из репозитория (ваши останутся в файлах <code>.bak</code>); режим link: меняются файлы в репозитории.</li>
+</ul>
+<p>Чтобы увидеть новый цвет: Super+Shift+C (sway и бар), <code>makoctl reload</code>, новые окна foot и vim / nvim.</p>
+</details>
+<details class="section">
+<summary><h2 id="help">shh help</h2></summary>
+<pre><code>shh help</code></pre>
+<p>Печатает список команд; <code>shh -h</code> и <code>shh --help</code> делают то же. Без команды или с неизвестной: список и ошибка.</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">
@@ -71,7 +117,7 @@
 <li><a href="install.html">Install</a></li>
 <li><span aria-current="page">Shh commands</span></li>
 <li><a href="components.html">Components</a></li>
-<li><a href="desktop.html">Desktop</a></li>
+<li><a href="environment.html">Environment</a></li>
 <li><a href="keybinds.html">Keybinds</a></li>
 <li><a href="layout.html">Layout</a></li>
 <li><a href="known-issues.html">Known-issues</a></li>
