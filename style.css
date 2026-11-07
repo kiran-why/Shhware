@@ -56,12 +56,17 @@ h3 {
   color: var(--accent);
 }
 
-/* site name on the left, language switch on the right */
+/* site icon on the left, language switch on the right */
 header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 0 2ch;
+}
+
+header img {
+  display: block; /* no inline-image gap under it */
 }
 
 /* small, one line, at the bottom of the window */
@@ -219,13 +224,14 @@ a:hover {
   color: var(--bg);
 }
 
-/* wide screens: tree at the left edge, text centered in the space that is left;
+/* wide screens: tree at the left edge, text centered in the window (pushed right only when the tree needs the room);
    narrow: tree after the text */
 @media (min-width: 60rem) {
   body {
     max-width: none;
     display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
+    /* tree, text, empty: both sides 1fr, so the text is centered in the window; the left one never narrower than the tree (min-content = its width, it is nowrap; max-content would also take the footer's full width, the footer spans this column) */
+    grid-template-columns: minmax(min-content, 1fr) minmax(0, 80ch) minmax(0, 1fr);
     grid-template-rows: auto 1fr auto;
     column-gap: 4ch;
   }
@@ -298,7 +304,21 @@ main td {
 /* commands: explicit size, a <pre> would fall back to the small monospace default */
 main pre {
   font-size: 1rem;
+}
+
+/* commands set apart from the text like a terminal box: dark gray, a line on the left
+   (not the logo, also a <pre>: overflow would give it scrollbars) */
+main pre:not(.logo) {
   overflow-x: auto;
+  background: #161616;
+  border-left: 2px solid var(--muted);
+  padding: 0.5em 1ch;
+}
+
+/* numbered steps: an empty line between items (1.5em = one line at line-height 1.5);
+   a <pre> margin at the end of an item collapses into it, so every gap is the same */
+main ol > li + li {
+  margin-top: 1.5em;
 }
 
 /* hover / focus note: a number after the word, the note shows under it.
