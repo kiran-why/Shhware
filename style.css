@@ -301,6 +301,20 @@ main td {
   vertical-align: top;
 }
 
+/* lists of several-line items (components): an empty line between items */
+main ul.spaced > li + li {
+  margin-top: 1em;
+}
+
+/* the item name at the start (mode, editor...) in heading white */
+main ul.spaced > li > code:first-child {
+  color: var(--accent);
+}
+
+main ul.spaced {
+  overflow-wrap: anywhere; /* long paths break instead of widening the page */
+}
+
 /* commands: explicit size, a <pre> would fall back to the small monospace default */
 main pre {
   font-size: 1rem;

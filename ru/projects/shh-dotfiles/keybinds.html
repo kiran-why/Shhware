@@ -26,28 +26,91 @@
 <main>
 <article>
 <h1>Горячие клавиши</h1>
-<h2>Основные клавиши</h2>
-<p>TODO</p>
-<h2>Рабочие пространства</h2>
-<p>TODO</p>
-<h2>Клавиши компонентов</h2>
-<p>TODO</p>
-<h3><code>broot</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>firefox</code></h3>
-<p>TODO</p>
-<h3><code>mako</code></h3>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>scratchpad</code></h3>
-<p>TODO</p>
-<h3><code>yazi</code></h3>
-<p>TODO</p>
-<h2>Список клавиш: Super+/</h2>
-<p>TODO</p>
+<p>Super — клавиша Windows. <strong>Super+/</strong> показывает все клавиши, с поиском; новая клавиша в конфигах появляется там сама (<a href="environment.html#keys">keys</a>). Клавиши работают при любой раскладке.</p>
+<p>Файлы: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/keybinds">config/sway/keybinds</a>, <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/workspaces">config/sway/workspaces</a>, клавиши каждой части в <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/sway/features">config/sway/features/</a>; ставятся в <code>~/.config/sway/</code>.</p>
+<details class="section">
+<summary><h2 id="programs">Программы</h2></summary>
+<table>
+<thead>
+<tr><th>Клавиши</th><th>Действие</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+T</td><td>терминал</td></tr>
+<tr><td>Super+R</td><td><a href="environment.html#launcher">запуск программ</a></td></tr>
+<tr><td>Super+M</td><td><a href="environment.html#menu">меню</a>, ещё раз — закрыть</td></tr>
+<tr><td>Super+L</td><td><a href="environment.html#power">питание</a>: выход, выключение, перезагрузка, сон</td></tr>
+<tr><td>Super+Escape</td><td><a href="environment.html#lock">блокировка</a>, экраны гаснут; ещё раз — экраны включаются</td></tr>
+<tr><td>Super+/</td><td>все клавиши, ещё раз — закрыть</td></tr>
+<tr><td>Super+Shift+C</td><td>перечитать конфиг sway</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="windows">Окна</h2></summary>
+<table>
+<thead>
+<tr><th>Клавиши</th><th>Действие</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+Q</td><td>закрыть окно</td></tr>
+<tr><td>Super+Shift+F</td><td>на весь экран</td></tr>
+<tr><td>Super+V</td><td>плавающее / в тайлинге</td></tr>
+<tr><td>Super+стрелки</td><td>фокус на другое окно</td></tr>
+<tr><td>Super+Shift+стрелки</td><td>переместить окно</td></tr>
+<tr><td>Super+левая кнопка мыши</td><td>перетащить окно</td></tr>
+<tr><td>Super+правая кнопка мыши</td><td>изменить размер окна</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="workspaces">Рабочие пространства</h2></summary>
+<table>
+<thead>
+<tr><th>Клавиши</th><th>Действие</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+1 … 0</td><td>перейти на пространство 1 … 10</td></tr>
+<tr><td>Super+Shift+1 … 0</td><td>отправить окно на пространство 1 … 10</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="media">Громкость, яркость, раскладка</h2></summary>
+<table>
+<thead>
+<tr><th>Клавиши</th><th>Действие</th></tr>
+</thead>
+<tbody>
+<tr><td>клавиши громкости</td><td>громче / тише / без звука, уровень показывается в уведомлении</td></tr>
+<tr><td>клавиши яркости</td><td>ярче / темнее, уровень показывается в уведомлении</td></tr>
+<tr><td>Alt+Shift</td><td>сменить раскладку; другие клавиши: <a href="components.html#settings">settings: switch layout</a></td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="parts">Клавиши частей</h2></summary>
+<p>Выключите часть в <a href="shh.html#config">shh config</a>, например record, — пропадут и её клавиши: следующий <a href="shh.html#update">shh update</a> удалит её файл <code>~/.config/sway/features/record</code>, где они записаны. До Super+Shift+C (или перезахода) sway помнит старые клавиши.</p>
+<table>
+<thead>
+<tr><th>Клавиши</th><th>Действие</th><th>Часть</th></tr>
+</thead>
+<tbody>
+<tr><td>Print</td><td>скриншот области</td><td><a href="components.html#screenshot">screenshot</a></td></tr>
+<tr><td>Shift+Print</td><td>скриншот всех экранов</td><td><a href="components.html#screenshot">screenshot</a></td></tr>
+<tr><td>Ctrl+Print</td><td>запись экрана без звука; ещё раз — стоп</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Ctrl+Alt+Print</td><td>запись со звуком системы</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Alt+Print</td><td>запись с микрофоном</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Super+C</td><td>история буфера обмена, ещё раз — закрыть</td><td><a href="components.html#clipboard">clipboard</a></td></tr>
+<tr><td>Super+Shift+S</td><td>спрятать окно</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
+<tr><td>Super+S</td><td>показать / спрятать спрятанное окно</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
+<tr><td>Super+F</td><td>файловый менеджер</td><td><a href="components.html#settings">file manager</a></td></tr>
+<tr><td>Super+B</td><td>браузер</td><td><a href="components.html#misc">firefox</a></td></tr>
+<tr><td>Super+N</td><td>закрыть уведомление</td><td><a href="components.html#misc">mako</a></td></tr>
+<tr><td>Super+Shift+N</td><td>закрыть все уведомления</td><td><a href="components.html#misc">mako</a></td></tr>
+<tr><td>Super+Ctrl+N</td><td>вернуть последнее уведомление</td><td><a href="components.html#misc">mako</a></td></tr>
+</tbody>
+</table>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">

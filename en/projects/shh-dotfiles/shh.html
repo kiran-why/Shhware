@@ -32,19 +32,7 @@
 <pre><code>shh config</code></pre>
 <p>Every change is saved at once and applied by the next <a href="#update">shh update</a> (before the first install: <code>sh install.sh</code>). A part turned off: its packages, files and services are not installed.</p>
 <h3>settings: install options</h3>
-<ul>
-<li><code>mode</code>: copy (the default: the configs are copies, the repo can be deleted) or link (links to the repo, your edits land in it);</li>
-<li><code>layouts</code>: keyboard layouts, the first one is the default (us,ru);</li>
-<li><code>switch layout</code>: the keys that switch the layout: Alt+Shift (default), Ctrl+Shift, Super+Space, Caps Lock, Left Alt+Left Shift;</li>
-<li><code>dns</code>: DHCP (from the network, default), Cloudflare, Quad9, Google; any other: by hand in the config file;</li>
-<li><code>graphics</code>: auto (by the cards <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a> finds, recommended) or the drivers picked by hand: AMD, Intel, NVIDIA, Nouveau (the free NVIDIA driver; NVIDIA and Nouveau can't be both);</li>
-<li><code>editor</code>: Vim (default, fewer dependencies) or Neovim, the same look, options and keys;</li>
-<li><code>file manager</code>: Broot (default, folders as a tree) or Yazi (previews, tabs);</li>
-<li>Artix only: <code>aur helper</code>: yay (default) or paru; <code>pacman</code>: colors and parallel downloads, AUR builds on all CPU cores (on);</li>
-<li><code>nobeep</code>: mute the motherboard beeper (on);</li>
-<li><code>maxhz</code>: the highest refresh rate of every screen (on);</li>
-<li><code>xwayland</code>: X11 programs, after a relogin (off).</li>
-</ul>
+<p>Install options: <a href="components.html#settings">Components: settings</a>.</p>
 <h3>features: environment tools</h3>
 <p>Parts of the environment you can turn off: <a href="components.html#features">Components: features</a>.</p>
 <h3>misc: additional packages</h3>

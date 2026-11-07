@@ -25,30 +25,90 @@
 <main>
 <article>
 <h1>Repository layout</h1>
-<h2><code>install.sh</code></h2>
-<p>TODO</p>
-<h2><code>lib/</code></h2>
-<p>TODO</p>
+<p>What is where in <a href="https://github.com/kiran-why/Shh-dotfiles">the repo</a>, and where the install puts it.</p>
+<details class="section">
+<summary><h2 id="install-sh"><code>install.sh</code></h2></summary>
+<p>Sets up a fresh system: packages, drivers, services, system files, the dotfiles. Safe to run again. What differs per distro is in <a href="#system">system/</a>. The steps: <a href="install.html">Install</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="lib"><code>lib/</code></h2></summary>
 <h3><code>lib.sh</code></h3>
-<p>TODO</p>
+<p>Shared code of install.sh, link.sh and shh: colors, messages, lists, the logo. Not run on its own.</p>
 <h3 id="link-sh"><code>link.sh</code></h3>
-<p>TODO</p>
-<h2><code>scripts/</code></h2>
-<p>TODO</p>
-<h2><code>components/</code></h2>
-<p>TODO</p>
-<h2><code>system/</code></h2>
-<p>TODO</p>
-<h3><code>artix/</code></h3>
-<p>TODO</p>
-<h3><code>void/</code></h3>
-<p>TODO</p>
-<h2><code>config/</code></h2>
-<p>TODO</p>
-<h2><code>home/</code></h2>
-<p>TODO</p>
-<h2><code>wallpapers/</code></h2>
-<p>TODO</p>
+<p>Puts the repo into your home folder, file by file: copies, or links to the repo in link mode. A file that is not ours is moved to <code>NAME.bak-DATE</code>, never deleted. What is ours: the list in <code>~/.local/state/shh/installed</code>.</p>
+<table>
+<thead>
+<tr><th>Repo</th><th>Installed to</th></tr>
+</thead>
+<tbody>
+<tr><td><code>config/</code></td><td><code>~/.config/</code></td></tr>
+<tr><td><code>home/</code></td><td><code>~/</code></td></tr>
+<tr><td><code>scripts/</code></td><td><code>~/.local/bin/</code></td></tr>
+<tr><td><code>wallpapers/</code></td><td><code>~/wallpapers/</code></td></tr>
+<tr><td><code>lib/*.sh</code>, <code>system/DISTRO/</code>, <code>components/DISTRO_components.txt</code></td><td><code>~/.local/share/shh/</code></td></tr>
+</tbody>
+</table>
+<p>install.sh and shh run it for you. By hand:</p>
+<ul class="spaced">
+<li><code>-n</code>, <code>--dry-run</code>: show what would be done, change nothing;</li>
+<li><code>--link</code>: links to the repo, your edits land in it;</li>
+<li><code>--copy</code>: copies, the repo can be deleted (the default);</li>
+<li><code>-u</code>, <code>--uninstall</code>: remove what is ours, put the old files back (<a href="shh.html#uninstall">shh uninstall</a>);</li>
+<li><code>-h</code>, <code>--help</code>.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="scripts"><code>scripts/</code></h2></summary>
+<p>The menus and tools, 21 shell scripts, and <a href="shh.html">shh</a> among them. Installed to <code>~/.local/bin/</code>. What each does: <a href="environment.html">Environment</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="components"><code>components/</code></h2></summary>
+<p><code>artix_components.txt</code>, <code>void_components.txt</code>: the parts <a href="shh.html#config">shh config</a> can turn off, one per line: name, packages, files, services, tab, default. The list: <a href="components.html">Components</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="system"><code>system/</code></h2></summary>
+<p>One folder per distro: <code>artix/</code>, <code>void/</code>. In each:</p>
+<ul class="spaced">
+<li><code>distro.sh</code>: what only this distro does: the package manager, the services, the login. Every distro has the same functions;</li>
+<li><code>services.txt</code>: the services started at boot;</li>
+<li><code>packages/</code>: <code>common.csv</code>, the packages for everyone, and one list per graphics driver.<br>Artix: amd, intel, nvidia, nvidia-580xx.<br>Void: amd, intel.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="config"><code>config/</code></h2></summary>
+<p>Installed to <code>~/.config/</code>.</p>
+<table>
+<thead>
+<tr><th>Folder</th><th>What</th></tr>
+</thead>
+<tbody>
+<tr><td><code>sway/</code></td><td>sway: keys, workspaces, look, window rules, the programs it starts; <code>features/</code>: a file per part</td></tr>
+<tr><td><code>swaybar/</code></td><td>the <a href="environment.html#bar">bar</a></td></tr>
+<tr><td><code>swaylock/</code></td><td>the lock screen</td></tr>
+<tr><td><code>foot/</code></td><td>the terminal and the palette</td></tr>
+<tr><td><code>fzf/</code></td><td>the look of every menu</td></tr>
+<tr><td><code>vim/</code>, <code>nvim/</code></td><td>the editor</td></tr>
+<tr><td><code>broot/</code>, <code>yazi/</code></td><td>the file manager</td></tr>
+<tr><td><code>mako/</code></td><td>notifications</td></tr>
+<tr><td><code>imv/</code></td><td>the image viewer</td></tr>
+<tr><td><code>fastfetch/</code></td><td>system info in the terminal</td></tr>
+<tr><td><code>cliphist/</code></td><td>the clipboard history size</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="home"><code>home/</code></h2></summary>
+<p>Installed to <code>~/</code>.</p>
+<ul class="spaced">
+<li><code>.zshrc</code>: the shell;</li>
+<li><code>.zprofile</code>: starts sway on tty1;</li>
+<li><code>.local/share/applications/mimeapps.list</code>: which program opens which file type.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="wallpapers"><code>wallpapers/</code></h2></summary>
+<p>Installed to <code>~/wallpapers/</code>: one picture per distro (Artix, Void, Gentoo, CRUX). Found on the internet, the authors are unknown; they are <strong>not</strong> under the MIT license of the repo. More: <a href="environment.html#wallpaper">Environment: wallpaper</a>.</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">

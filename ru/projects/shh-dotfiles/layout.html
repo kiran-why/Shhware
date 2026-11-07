@@ -26,30 +26,90 @@
 <main>
 <article>
 <h1>Структура репозитория</h1>
-<h2><code>install.sh</code></h2>
-<p>TODO</p>
-<h2><code>lib/</code></h2>
-<p>TODO</p>
+<p>Что где лежит в <a href="https://github.com/kiran-why/Shh-dotfiles">репозитории</a> и куда это кладёт установка.</p>
+<details class="section">
+<summary><h2 id="install-sh"><code>install.sh</code></h2></summary>
+<p>Настраивает свежую систему: пакеты, драйверы, сервисы, системные файлы, dotfiles. Можно запускать повторно. То, что отличается по дистрибутивам, лежит в <a href="#system">system/</a>. Шаги: <a href="install.html">Установка</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="lib"><code>lib/</code></h2></summary>
 <h3><code>lib.sh</code></h3>
-<p>TODO</p>
+<p>Общий код install.sh, link.sh и shh: цвета, сообщения, списки, лого. Сам по себе не запускается.</p>
 <h3 id="link-sh"><code>link.sh</code></h3>
-<p>TODO</p>
-<h2><code>scripts/</code></h2>
-<p>TODO</p>
-<h2><code>components/</code></h2>
-<p>TODO</p>
-<h2><code>system/</code></h2>
-<p>TODO</p>
-<h3><code>artix/</code></h3>
-<p>TODO</p>
-<h3><code>void/</code></h3>
-<p>TODO</p>
-<h2><code>config/</code></h2>
-<p>TODO</p>
-<h2><code>home/</code></h2>
-<p>TODO</p>
-<h2><code>wallpapers/</code></h2>
-<p>TODO</p>
+<p>Кладёт репозиторий в домашнюю папку, файл за файлом: копиями, а в режиме link — ссылками на репозиторий. Чужой файл переносится в <code>NAME.bak-ДАТА</code>, никогда не удаляется. Что наше — список в <code>~/.local/state/shh/installed</code>.</p>
+<table>
+<thead>
+<tr><th>Репозиторий</th><th>Куда ставится</th></tr>
+</thead>
+<tbody>
+<tr><td><code>config/</code></td><td><code>~/.config/</code></td></tr>
+<tr><td><code>home/</code></td><td><code>~/</code></td></tr>
+<tr><td><code>scripts/</code></td><td><code>~/.local/bin/</code></td></tr>
+<tr><td><code>wallpapers/</code></td><td><code>~/wallpapers/</code></td></tr>
+<tr><td><code>lib/*.sh</code>, <code>system/DISTRO/</code>, <code>components/DISTRO_components.txt</code></td><td><code>~/.local/share/shh/</code></td></tr>
+</tbody>
+</table>
+<p>install.sh и shh запускают его сами. Вручную:</p>
+<ul class="spaced">
+<li><code>-n</code>, <code>--dry-run</code>: показать, что будет сделано, ничего не менять;</li>
+<li><code>--link</code>: ссылки на репозиторий, ваши правки попадают в него;</li>
+<li><code>--copy</code>: копии, репозиторий можно удалить (по умолчанию);</li>
+<li><code>-u</code>, <code>--uninstall</code>: удалить наше, вернуть старые файлы (<a href="shh.html#uninstall">shh uninstall</a>);</li>
+<li><code>-h</code>, <code>--help</code>.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="scripts"><code>scripts/</code></h2></summary>
+<p>Меню и инструменты, 21 shell-скрипт, среди них <a href="shh.html">shh</a>. Ставятся в <code>~/.local/bin/</code>. Что делает каждый: <a href="environment.html">Окружение</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="components"><code>components/</code></h2></summary>
+<p><code>artix_components.txt</code>, <code>void_components.txt</code>: части, которые <a href="shh.html#config">shh config</a> может выключить, по одной на строку: имя, пакеты, файлы, сервисы, вкладка, значение по умолчанию. Список: <a href="components.html">Компоненты</a>.</p>
+</details>
+<details class="section">
+<summary><h2 id="system"><code>system/</code></h2></summary>
+<p>По папке на дистрибутив: <code>artix/</code>, <code>void/</code>. В каждой:</p>
+<ul class="spaced">
+<li><code>distro.sh</code>: то, что делает только этот дистрибутив: пакетный менеджер, сервисы, вход в систему. Функции у всех дистрибутивов одинаковые;</li>
+<li><code>services.txt</code>: сервисы, которые запускаются при загрузке;</li>
+<li><code>packages/</code>: <code>common.csv</code> — пакеты для всех, и по списку на каждый графический драйвер.<br>Artix: amd, intel, nvidia, nvidia-580xx.<br>Void: amd, intel.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="config"><code>config/</code></h2></summary>
+<p>Ставится в <code>~/.config/</code>.</p>
+<table>
+<thead>
+<tr><th>Папка</th><th>Что</th></tr>
+</thead>
+<tbody>
+<tr><td><code>sway/</code></td><td>sway: клавиши, рабочие пространства, вид, правила окон, программы, которые он запускает; <code>features/</code> — по файлу на часть</td></tr>
+<tr><td><code>swaybar/</code></td><td><a href="environment.html#bar">панель</a></td></tr>
+<tr><td><code>swaylock/</code></td><td>экран блокировки</td></tr>
+<tr><td><code>foot/</code></td><td>терминал и палитра</td></tr>
+<tr><td><code>fzf/</code></td><td>вид всех меню</td></tr>
+<tr><td><code>vim/</code>, <code>nvim/</code></td><td>редактор</td></tr>
+<tr><td><code>broot/</code>, <code>yazi/</code></td><td>файловый менеджер</td></tr>
+<tr><td><code>mako/</code></td><td>уведомления</td></tr>
+<tr><td><code>imv/</code></td><td>просмотр картинок</td></tr>
+<tr><td><code>fastfetch/</code></td><td>информация о системе в терминале</td></tr>
+<tr><td><code>cliphist/</code></td><td>размер истории буфера обмена</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="home"><code>home/</code></h2></summary>
+<p>Ставится в <code>~/</code>.</p>
+<ul class="spaced">
+<li><code>.zshrc</code>: оболочка;</li>
+<li><code>.zprofile</code>: запускает sway на tty1;</li>
+<li><code>.local/share/applications/mimeapps.list</code>: какая программа открывает какой тип файлов.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="wallpapers"><code>wallpapers/</code></h2></summary>
+<p>Ставится в <code>~/wallpapers/</code>: по картинке на дистрибутив (Artix, Void, Gentoo, CRUX). Найдены в интернете, авторы неизвестны; они <strong>не</strong> под лицензией MIT репозитория. Подробнее: <a href="environment.html#wallpaper">Окружение: обои</a>.</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">

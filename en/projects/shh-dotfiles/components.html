@@ -25,54 +25,110 @@
 <main>
 <article>
 <h1>Components</h1>
-<h2 id="features">features</h2>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>bluetooth</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>screenshare</code></h3>
-<p>TODO</p>
-<h3><code>autotile</code></h3>
-<p>TODO</p>
-<h3><code>fastfetch</code></h3>
-<p>TODO</p>
-<h3><code>scratchpad</code></h3>
-<p>TODO</p>
-<h2 id="misc">misc</h2>
-<p>TODO</p>
-<h3><code>firefox</code></h3>
-<p>TODO</p>
-<h3><code>sing-box</code></h3>
-<p>TODO</p>
-<h3><code>mpv</code></h3>
-<p>TODO</p>
-<h3><code>imv</code></h3>
-<p>TODO</p>
-<h3><code>btop</code></h3>
-<p>TODO</p>
-<h3><code>7zip</code></h3>
-<p>TODO</p>
-<h3><code>man</code></h3>
-<p>TODO</p>
-<h3><code>mako</code></h3>
-<p>TODO</p>
-<h3><code>emoji</code></h3>
-<p>TODO</p>
-<h3><code>noto</code></h3>
-<p>TODO</p>
-<h2 id="settings">settings</h2>
-<p>TODO</p>
-<h3>xwayland</h3>
-<p>TODO</p>
-<h3>editor</h3>
-<p>TODO</p>
-<h3>file manager</h3>
-<p>TODO</p>
-<h3>maxhz</h3>
-<p>TODO</p>
+<p>The parts of the system you choose in <a href="shh.html#config">shh config</a>, in three tabs: settings, features, misc. The lists: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/components/artix_components.txt"><code>components/artix_components.txt</code></a> and <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/components/void_components.txt"><code>components/void_components.txt</code></a>. Everything else is always installed.</p>
+<p>Files below: path in the repo → where the install puts it.</p>
+<p>Turned a part off? The next <a href="shh.html#update">shh update</a> removes its files (except the ones you changed), stops its service and asks whether to remove its packages.</p>
+<details class="section">
+<summary><h2 id="settings">Settings</h2></summary>
+<p>Install options.</p>
+<ul class="spaced">
+<li><code>mode</code>: copy (default) or link.<br>copy: the configs are copies, the repo can be deleted.<br>link: the configs are links to the repo, your edits go into it.</li>
+<li><code>layouts</code>: keyboard layouts, the first one is the main one. Default: us,ru.</li>
+<li><code>switch layout</code>: the keys that switch the layout: Alt+Shift (default), Ctrl+Shift, Super+Space, Caps Lock, Left Alt+Left Shift.</li>
+<li><code>dns</code>: DHCP (default), Cloudflare, Quad9, Google.<br>Any other: by hand in <code>~/.config/shh/config</code>.</li>
+<li><code>graphics</code>: auto (default) or by hand: AMD, Intel, NVIDIA, Nouveau.<br>auto: the drivers for the cards <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a> finds.<br>NVIDIA and Nouveau can't be picked together.</li>
+<li><code>editor</code>: Vim (default) or Neovim.<br>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/vim">config/vim</a> → <code>~/.config/vim</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/nvim">config/nvim</a> → <code>~/.config/nvim</code></li>
+<li><code>file manager</code>: Broot (default) or Yazi, opens on Super+F.<br>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/broot">config/broot</a> → <code>~/.config/broot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/broot">config/sway/features/broot</a> → <code>~/.config/sway/features/broot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/yazi">config/yazi</a> → <code>~/.config/yazi</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/yazi">config/sway/features/yazi</a> → <code>~/.config/sway/features/yazi</code></li>
+<li><code>aur helper</code>, Artix only: yay (default) or paru.</li>
+<li><code>pacman</code>, Artix only: colors, parallel downloads, AUR builds on all CPU cores. On by default.</li>
+<li><code>nobeep</code>: mutes the motherboard beeper. On by default.</li>
+<li><code>maxhz</code>: every screen at its highest refresh rate, also one plugged in later. On by default.<br>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/maxhz">scripts/maxhz</a> → <code>~/.local/bin/maxhz</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/maxhz">config/sway/features/maxhz</a> → <code>~/.config/sway/features/maxhz</code></li>
+<li><code>xwayland</code>: X11 programs, after a relogin. Off by default.<br>Off: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/noxwayland">config/sway/features/noxwayland</a> → <code>~/.config/sway/features/noxwayland</code><br>On: Artix installs xorg-xwayland; on Void it is always installed, sway needs it.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="features">Features</h2></summary>
+<p>Scripts and sway settings that make the system easier to use. All on by default. Each one keeps its sway lines in its own file in <code>config/sway/features/</code>.</p>
+<h3 id="fastfetch"><code>fastfetch</code></h3>
+<p>System info in every new foot window: our logo on the left, a box with OS, kernel, CPU, GPU, RAM, disk and more on the right.</p>
+<p>To change the logo: put your file in <code>~/.config/fastfetch/logos/</code> and write its path in <code>"source"</code> in <code>~/.config/fastfetch/config.jsonc</code>. No <code>$</code> in the logo: fastfetch reads <code>$1</code>…<code>$9</code> as colors. In copy mode the next shh update puts the original <code>config.jsonc</code> back, yours stays next to it as <code>config.jsonc.bak-DATE</code>.</p>
+<ul class="spaced">
+<li>Files: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/fastfetch">config/fastfetch</a> → <code>~/.config/fastfetch</code></li>
+<li>Started by: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zshrc">home/.zshrc</a> → <code>~/.zshrc</code></li>
+<li>Package: fastfetch</li>
+</ul>
+<h3 id="autotile"><code>autotile</code></h3>
+<p>Tiling like Hyprland's dwindle: a new window splits the focused one in half along its longer side. Floating, fullscreen, stacked and tabbed windows are left alone.</p>
+<ul class="spaced">
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/autotile">scripts/autotile</a> → <code>~/.local/bin/autotile</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/autotile">config/sway/features/autotile</a> → <code>~/.config/sway/features/autotile</code></li>
+<li>Package: none of its own</li>
+</ul>
+<h3 id="clipboard"><code>clipboard</code></h3>
+<p>Clipboard history: the last 100 copies, any of them can be copied again. The first line of the history clears it.</p>
+<ul class="spaced">
+<li>Keys:<br>Super+C: open / close the history<br>Enter: copy<br>Ctrl+D: delete one</li>
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/clipboard">scripts/clipboard</a> → <code>~/.local/bin/clipboard</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/cliphist">config/cliphist</a> → <code>~/.config/cliphist</code> (history size)<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/clipboard">config/sway/features/clipboard</a> → <code>~/.config/sway/features/clipboard</code></li>
+<li>Package: cliphist</li>
+</ul>
+<h3 id="record"><code>record</code></h3>
+<p>Screen recording. Drag for a region, click a screen for all of it, Esc cancels. While it records, the bar shows <code>● rec</code>. Press any of the keys again to stop.</p>
+<ul class="spaced">
+<li>Keys:<br>Ctrl+Print: no sound<br>Ctrl+Alt+Print: with the system sound<br>Alt+Print: with the microphone</li>
+<li>Saved to: <code>~/media/recordings/</code></li>
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/record">scripts/record</a> → <code>~/.local/bin/record</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/record">config/sway/features/record</a> → <code>~/.config/sway/features/record</code></li>
+<li>Package: wf-recorder</li>
+</ul>
+<h3 id="screenshot"><code>screenshot</code></h3>
+<p>Screenshots, also copied to the clipboard. Esc cancels.</p>
+<ul class="spaced">
+<li>Keys:<br>Print: a region<br>Shift+Print: all screens</li>
+<li>Saved to: <code>~/media/screenshots/</code></li>
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/screenshot">scripts/screenshot</a> → <code>~/.local/bin/screenshot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshot">config/sway/features/screenshot</a> → <code>~/.config/sway/features/screenshot</code></li>
+<li>Package: grim</li>
+</ul>
+<h3 id="bluetooth"><code>bluetooth</code></h3>
+<p>Bluetooth and its menu: Bluez in the bar menu (<a href="environment.html">Environment</a>). Turn it on / off, pair, connect, disconnect, forget a device. No PIN prompt: pair a keyboard that asks for a PIN in <code>bluetoothctl</code>. No adapter: the menu says so.</p>
+<ul class="spaced">
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/bluetooth">scripts/bluetooth</a> → <code>~/.local/bin/bluetooth</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/bluetooth">config/sway/features/bluetooth</a> → <code>~/.config/sway/features/bluetooth</code></li>
+<li>Packages:<br>Artix: bluez, bluez-utils, bluez-s6<br>Void: bluez, libspa-bluetooth</li>
+<li>Service: bluetoothd</li>
+</ul>
+<h3 id="scratchpad"><code>scratchpad</code></h3>
+<p>Hidden windows: hide a window and bring it back on any workspace.</p>
+<ul class="spaced">
+<li>Keys:<br>Super+Shift+S: hide the window<br>Super+S: show / hide it</li>
+<li>Files: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/scratchpad">config/sway/features/scratchpad</a> → <code>~/.config/sway/features/scratchpad</code></li>
+<li>Package: none of its own</li>
+</ul>
+<h3 id="screenshare"><code>screenshare</code></h3>
+<p>Screen sharing in the browser.</p>
+<ul class="spaced">
+<li>Files: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshare">config/sway/features/screenshare</a> → <code>~/.config/sway/features/screenshare</code></li>
+<li>Package: xdg-desktop-portal-wlr</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="misc">Misc</h2></summary>
+<p>Extra programs. All on by default, turn off what you don't need.</p>
+<table>
+<thead>
+<tr><th>Name</th><th>What</th><th>Artix</th><th>Void</th></tr>
+</thead>
+<tbody>
+<tr><td><code>firefox</code></td><td>browser</td><td>firefox</td><td>firefox</td></tr>
+<tr><td><code>sing-box</code></td><td>VPN client</td><td>sing-box</td><td>sing-box</td></tr>
+<tr><td><code>mpv</code></td><td>video player</td><td>mpv</td><td>mpv</td></tr>
+<tr><td><code>imv</code></td><td>image viewer</td><td>imv</td><td>imv</td></tr>
+<tr><td><code>btop</code></td><td>system monitor</td><td>btop</td><td>btop</td></tr>
+<tr><td><code>7zip</code></td><td>archives</td><td>7zip</td><td>7zip</td></tr>
+<tr><td><code>man</code></td><td>manual pages</td><td>man-db, man-pages</td><td>man-pages-devel</td></tr>
+<tr><td><code>mako</code></td><td>notifications</td><td>mako</td><td>mako</td></tr>
+<tr><td><code>emoji</code></td><td>emoji font</td><td>noto-fonts-emoji</td><td>noto-fonts-emoji</td></tr>
+<tr><td><code>noto</code></td><td>text font</td><td>noto-fonts</td><td>noto-fonts-ttf</td></tr>
+</tbody>
+</table>
+<p>Anything not on the list: <code>sudo pacman -S NAME</code> (Artix) or <code>sudo xbps-install NAME</code> (Void).</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">

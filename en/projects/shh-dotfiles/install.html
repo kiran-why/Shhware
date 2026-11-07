@@ -52,7 +52,8 @@
 </details>
 <details class="section">
 <summary><h2>Artix installation</h2></summary>
-<p>A fresh base install with the s6<span class="star">*<span class="visually-hidden"> (important)</span></span> init and seatd<span class="star">*<span class="visually-hidden"> (important)</span></span> (pick <code>seatd-s6</code>). How to install Artix: <a href="https://wiki.artixlinux.org/Main/Installation">wiki.artixlinux.org/Main/Installation</a>.</p>
+<p>A fresh base install with the s6<span class="star">*<span class="visually-hidden"> (important)</span></span> init and seatd<span class="star">*<span class="visually-hidden"> (important)</span></span> (pick <code>seatd-s6</code>).</p>
+<p><a href="https://wiki.artixlinux.org/Main/Installation">How to install Artix</a> (Artix wiki)</p>
 <ol>
 <li>Install git:
 <pre><code>sudo pacman -S git</code></pre></li>
@@ -62,14 +63,15 @@
 <pre><code>cd ~/Shh-dotfiles
 sh install.sh</code></pre>
 The install log: <code>~/.local/state/shh/install.log</code> (the last run only, from the shh config menu on).</li>
-<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="shh.html#config">shh config</a>; <code>shh update</code> downloads it again:
+<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="components.html#settings">shh config</a>; <code>shh update</code> downloads it again:
 <pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
 <li>Reboot and log in on tty1: sway starts by itself.</li>
 </ol>
 </details>
 <details class="section">
 <summary><h2>Void installation</h2></summary>
-<p>A fresh base install with <span class="tip" tabindex="0">musl<span class="tip-text"> (the C library, instead of glibc)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span>: the setup is tested on musl only. seatd comes with the packages (no elogind). How to install Void: <a href="https://docs.voidlinux.org/installation/index.html">docs.voidlinux.org/installation</a>.</p>
+<p>A fresh base install with <span class="tip" tabindex="0">musl<span class="tip-text"> (the C library, instead of glibc)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span>: the setup is tested on musl only. seatd comes with the packages (no elogind).</p>
+<p><a href="https://docs.voidlinux.org/installation/index.html">How to install Void</a> (Void handbook)</p>
 <ol>
 <li>Update xbps<span class="star">*<span class="visually-hidden"> (important)</span></span>, a fresh system must do it first:
 <pre><code>sudo xbps-install -Su xbps</code></pre></li>
@@ -81,7 +83,7 @@ The install log: <code>~/.local/state/shh/install.log</code> (the last run only,
 <pre><code>cd ~/Shh-dotfiles
 sh install.sh</code></pre>
 The install log: <code>~/.local/state/shh/install.log</code> (the last run only, from the shh config menu on).</li>
-<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="shh.html#config">shh config</a>; <code>shh update</code> downloads it again:
+<li>Remove the repo (optional), only in <span class="tip" tabindex="0">copy mode<span class="tip-text"> (the default: the configs are copies, not links to the repo)</span></span><span class="star">*<span class="visually-hidden"> (important)</span></span> in <a href="components.html#settings">shh config</a>; <code>shh update</code> downloads it again:
 <pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
 <li>Reboot and log in on tty1: sway starts by itself.</li>
 </ol>
@@ -131,7 +133,7 @@ sh install.sh --check</code></pre>
 <li><code>start_log</code>: a copy of the output in <code>~/.local/state/shh/install.log</code> (last run only);</li>
 <li><code>enable_nopasswd</code>: temporary passwordless sudo, so AUR builds don't ask again and again;</li>
 <li><code>distro_prepare</code>: Artix: pacman settings, the Arch repos, the AUR helper; Void: updates xbps and the system;</li>
-<li><code>vmware_clipboard</code>: in VMware only, the clipboard between the host and the VM (Artix; not packaged for Void);</li>
+<li><code>vmware_clipboard</code>: in VMware only, the clipboard between the host and the VM (Artix; not packaged for Void). Script: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vmware-clipboard">scripts/vmware-clipboard</a> → <code>~/.local/bin/vmware-clipboard</code>, started with sway;</li>
 <li><code>install_packages</code>: the lists, minus the parts turned off;</li>
 <li><code>configure_gpu</code>: the settings the graphics driver needs;</li>
 <li><code>configure_network</code>: iwd, dhcpcd, DNS;</li>

@@ -25,10 +25,22 @@
 <main>
 <article>
 <h1>Known issues</h1>
-<h2>NVIDIA</h2>
-<p>TODO</p>
-<h2>Void Linux</h2>
-<p>TODO</p>
+<details class="section">
+<summary><h2 id="nvidia">NVIDIA</h2></summary>
+<ul class="spaced">
+<li>Not tested on NVIDIA cards. GTX 6xx / 7xx and older run on nouveau.</li>
+<li>Black screen after boot: remove <code>kms</code> from <code>HOOKS</code> in <code>/etc/mkinitcpio.conf</code>, then:
+<pre><code>sudo mkinitcpio -P</code></pre></li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="void">Void Linux</h2></summary>
+<ul class="spaced">
+<li>No NVIDIA driver on musl: NVIDIA cards run on nouveau only.</li>
+<li><code>wpa_supplicant</code> fights <code>iwd</code> over wifi. Turn it off:
+<pre><code>sudo rm /var/service/wpa_supplicant</code></pre></li>
+</ul>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">

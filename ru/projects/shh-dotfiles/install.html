@@ -53,7 +53,8 @@
 </details>
 <details class="section">
 <summary><h2>Установка на Artix</h2></summary>
-<p>Свежая базовая установка с init s6<span class="star">*<span class="visually-hidden"> (важно)</span></span> и seatd<span class="star">*<span class="visually-hidden"> (важно)</span></span> (выберите <code>seatd-s6</code>). Как установить Artix: <a href="https://wiki.artixlinux.org/Main/Installation">wiki.artixlinux.org/Main/Installation</a>.</p>
+<p>Свежая базовая установка с init s6<span class="star">*<span class="visually-hidden"> (важно)</span></span> и seatd<span class="star">*<span class="visually-hidden"> (важно)</span></span> (выберите <code>seatd-s6</code>).</p>
+<p><a href="https://wiki.artixlinux.org/Main/Installation">Как установить Artix</a> (Artix wiki)</p>
 <ol>
 <li>Установите git:
 <pre><code>sudo pacman -S git</code></pre></li>
@@ -63,14 +64,15 @@
 <pre><code>cd ~/Shh-dotfiles
 sh install.sh</code></pre>
 Лог установки: <code>~/.local/state/shh/install.log</code> (только последний запуск, начиная после меню shh config).</li>
-<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="shh.html#config">shh config</a>; <code>shh update</code> скачает его заново:
+<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="components.html#settings">shh config</a>; <code>shh update</code> скачает его заново:
 <pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
 <li>Перезагрузитесь и войдите на tty1: sway запустится сам.</li>
 </ol>
 </details>
 <details class="section">
 <summary><h2>Установка на Void</h2></summary>
-<p>Свежая базовая установка с <span class="tip" tabindex="0">musl<span class="tip-text"> (библиотека C, вместо glibc)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span>: проверено только на musl. seatd ставится вместе с пакетами (без elogind). Как установить Void: <a href="https://docs.voidlinux.org/installation/index.html">docs.voidlinux.org/installation</a>.</p>
+<p>Свежая базовая установка с <span class="tip" tabindex="0">musl<span class="tip-text"> (библиотека C, вместо glibc)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span>: проверено только на musl. seatd ставится вместе с пакетами (без elogind).</p>
+<p><a href="https://docs.voidlinux.org/installation/index.html">Как установить Void</a> (Void handbook)</p>
 <ol>
 <li>Обновите xbps<span class="star">*<span class="visually-hidden"> (важно)</span></span>, на свежей системе это нужно сделать первым:
 <pre><code>sudo xbps-install -Su xbps</code></pre></li>
@@ -82,7 +84,7 @@ sh install.sh</code></pre>
 <pre><code>cd ~/Shh-dotfiles
 sh install.sh</code></pre>
 Лог установки: <code>~/.local/state/shh/install.log</code> (только последний запуск, начиная после меню shh config).</li>
-<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="shh.html#config">shh config</a>; <code>shh update</code> скачает его заново:
+<li>Удалите репозиторий (по желанию), только в <span class="tip" tabindex="0">режиме copy<span class="tip-text"> (по умолчанию: конфиги скопированы, а не ссылаются на репозиторий)</span></span><span class="star">*<span class="visually-hidden"> (важно)</span></span> в <a href="components.html#settings">shh config</a>; <code>shh update</code> скачает его заново:
 <pre><code>cd ~ &amp;&amp; rm -rf ~/Shh-dotfiles</code></pre></li>
 <li>Перезагрузитесь и войдите на tty1: sway запустится сам.</li>
 </ol>
@@ -132,7 +134,7 @@ sh install.sh --check</code></pre>
 <li><code>start_log</code>: копия вывода в <code>~/.local/state/shh/install.log</code> (только последний запуск);</li>
 <li><code>enable_nopasswd</code>: временный sudo без пароля, чтобы сборка из AUR не спрашивала его снова и снова;</li>
 <li><code>distro_prepare</code>: Artix: настройки pacman, репозитории Arch, AUR helper; Void: обновляет xbps и систему;</li>
-<li><code>vmware_clipboard</code>: только в VMware, общий буфер обмена с хостом (Artix; для Void нет пакета);</li>
+<li><code>vmware_clipboard</code>: только в VMware, общий буфер обмена с хостом (Artix; для Void нет пакета). Скрипт: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vmware-clipboard">scripts/vmware-clipboard</a> → <code>~/.local/bin/vmware-clipboard</code>, запускается вместе с sway;</li>
 <li><code>install_packages</code>: пакеты из списков, кроме выключенных частей;</li>
 <li><code>configure_gpu</code>: настройки, нужные драйверу видеокарты;</li>
 <li><code>configure_network</code>: iwd, dhcpcd, DNS;</li>

@@ -33,19 +33,7 @@
 <pre><code>shh config</code></pre>
 <p>Каждое изменение сохраняется сразу и применяется при следующем <a href="#update">shh update</a> (до первой установки: <code>sh install.sh</code>). У выключенной части не ставятся её пакеты, файлы и сервисы.</p>
 <h3>settings: параметры установки</h3>
-<ul>
-<li><code>mode</code>: copy (по умолчанию: конфиги скопированы, репозиторий можно удалить) или link (ссылки на репозиторий, ваши правки попадают в него);</li>
-<li><code>layouts</code>: раскладки клавиатуры, первая — основная (us,ru);</li>
-<li><code>switch layout</code>: клавиши переключения раскладки: Alt+Shift (по умолчанию), Ctrl+Shift, Super+Space, Caps Lock, левый Alt+левый Shift;</li>
-<li><code>dns</code>: DHCP (от сети, по умолчанию), Cloudflare, Quad9, Google; любой другой — вручную в файле настроек;</li>
-<li><code>graphics</code>: auto (по видеокартам, которые находит <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a>, рекомендуется) или драйверы вручную: AMD, Intel, NVIDIA, Nouveau (свободный драйвер NVIDIA; NVIDIA и Nouveau вместе нельзя);</li>
-<li><code>editor</code>: Vim (по умолчанию, меньше зависимостей) или Neovim, вид, настройки и клавиши одинаковые;</li>
-<li><code>file manager</code>: Broot (по умолчанию, папки деревом) или Yazi (превью, вкладки);</li>
-<li>только Artix: <code>aur helper</code>: yay (по умолчанию) или paru; <code>pacman</code>: цвета и параллельные загрузки, сборка из AUR на всех ядрах (вкл.);</li>
-<li><code>nobeep</code>: выключить пищалку материнской платы (вкл.);</li>
-<li><code>maxhz</code>: максимальная частота обновления каждого экрана (вкл.);</li>
-<li><code>xwayland</code>: программы для X11, после перезахода (выкл.).</li>
-</ul>
+<p>Параметры установки: <a href="components.html#settings">Компоненты: settings</a>.</p>
 <h3>features: инструменты окружения</h3>
 <p>Части окружения, которые можно выключить: <a href="components.html#features">Компоненты: features</a>.</p>
 <h3>misc: дополнительные пакеты</h3>

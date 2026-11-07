@@ -25,50 +25,92 @@
 <main>
 <article>
 <h1>Environment</h1>
-<h2>Bar</h2>
-<p>TODO</p>
-<h2>Menu</h2>
-<p>TODO</p>
-<h2>Scripts</h2>
-<p>TODO</p>
-<h3><code>autotile</code></h3>
-<p>TODO</p>
-<h3><code>bluetooth</code></h3>
-<p>TODO</p>
-<h3><code>brightness</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>hardware</code></h3>
-<p>TODO</p>
-<h3><code>keys</code></h3>
-<p>TODO</p>
-<h3><code>launcher</code></h3>
-<p>TODO</p>
-<h3><code>lock</code></h3>
-<p>TODO</p>
-<h3><code>maxhz</code></h3>
-<p>TODO</p>
-<h3><code>power</code></h3>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>screenshot</code></h3>
-<p>TODO</p>
-<h3><code>settings</code></h3>
-<p>TODO</p>
-<h3><code>sound</code></h3>
-<p>TODO</p>
-<h3><code>vmware-clipboard</code></h3>
-<p>TODO</p>
-<h3><code>volume</code></h3>
-<p>TODO</p>
-<h3><code>vpn</code></h3>
-<p>TODO</p>
-<h3><code>wallpaper</code></h3>
-<p>TODO</p>
-<h3><code>wifi</code></h3>
-<p>TODO</p>
+<p>Sway with a plain bar. Menus and tools are small shell scripts that open in the terminal. Scripts: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/scripts">scripts/</a> → <code>~/.local/bin/</code>. Keys: <a href="keybinds.html">Keybinds</a>.</p>
+<p>Also part of it, described on Components: <a href="components.html#autotile">autotile</a>, <a href="components.html#bluetooth">bluetooth</a>, <a href="components.html#clipboard">clipboard</a>, <a href="components.html#settings">maxhz</a>, <a href="components.html#record">record</a>, <a href="components.html#screenshot">screenshot</a>.</p>
+<details class="section">
+<summary><h2 id="bar">Bar</h2></summary>
+<p>At the top. On the left the workspaces, one <code>●</code> each. On the right:</p>
+<ul class="spaced">
+<li><code>● rec</code>: while the screen is recorded, a click stops it;</li>
+<li>the clock: a click shows the date, the next one the time;</li>
+<li>the battery, on laptops only: red and a notification at 10% or less;</li>
+<li>the logo of your distro: a click opens the <a href="#menu">menu</a>.</li>
+</ul>
+<p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaybar/bar">config/swaybar/bar</a> → <code>~/.config/swaybar/bar</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaybar/status.sh">config/swaybar/status.sh</a> → <code>~/.config/swaybar/status.sh</code></p>
+</details>
+<details class="section">
+<summary><h2 id="menu">Menu</h2></summary>
+<p>Super+M or the button on the bar; the same again closes it. Esc goes back. Bluez and VPN are parts you can turn off in <a href="shh.html#config">shh config</a> (bluetooth, sing-box): after the next <a href="shh.html#update">shh update</a> their line is gone from the menu.</p>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/menu">scripts/menu</a> → <code>~/.local/bin/menu</code></p>
+<h3 id="wifi">Wifi</h3>
+<ul class="spaced">
+<li>Available networks: connect;</li>
+<li>Known networks: forget one;</li>
+<li>Check internet: tries github.com, kernel.org, wikipedia.org;</li>
+<li>Disconnect.</li>
+</ul>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/wifi">scripts/wifi</a> → <code>~/.local/bin/wifi</code></p>
+<h3 id="volume">Volume</h3>
+<ul class="spaced">
+<li>(+) Volume, (-) Volume: 5% a step, up to 100%;</li>
+<li>Mute/unmute: the sound or the microphone;</li>
+<li>In/out devices: where the sound goes and comes from.</li>
+</ul>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/volume">scripts/volume</a> → <code>~/.local/bin/volume</code>, the step and the max at the top of it</p>
+<h3 id="bluez">Bluez</h3>
+<p>Bluetooth: <a href="components.html#bluetooth">Components: bluetooth</a>.</p>
+<h3 id="vpn">VPN</h3>
+<p>sing-box with a subscription from your VPN provider.</p>
+<ul class="spaced">
+<li>On/off;</li>
+<li>Locations: pick a server;</li>
+<li>Add subscription: paste the link. It is kept in <code>/etc/sing-box/subscription</code>, readable by root only. Then delete the link from the <a href="components.html#clipboard">clipboard history</a> (Super+C);</li>
+<li>Update subscription;</li>
+<li>Start at boot: on / off.</li>
+</ul>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vpn">scripts/vpn</a> → <code>~/.local/bin/vpn</code></p>
+<h3 id="prefs">Prefs</h3>
+<ul class="spaced">
+<li>Svc: turn a service on or off right now (asks for the password). After a reboot they start as <a href="shh.html#config">shh config</a> says. seatd and dbus are marked: without seatd sway does not run, without dbus wifi and bluetooth;</li>
+<li>Light: brightness up / down, 5% a step, never below 5%: at 0 the screen can go black.</li>
+</ul>
+<p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/settings">scripts/settings</a> → <code>~/.local/bin/settings</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/brightness">scripts/brightness</a> → <code>~/.local/bin/brightness</code></p>
+<h3 id="power">Power</h3>
+<p>Exit (sway), Power off, Reboot, Sleep. Also on Super+L. A pick runs at once, there is no "are you sure".</p>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/power">scripts/power</a> → <code>~/.local/bin/power</code></p>
+</details>
+<details class="section">
+<summary><h2 id="launcher">Launcher</h2></summary>
+<p>Super+R: every program in <code>$PATH</code>, with search. Terminal programs open in their own terminal window, the others as they are.</p>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/launcher">scripts/launcher</a> → <code>~/.local/bin/launcher</code></p>
+</details>
+<details class="section">
+<summary><h2 id="keys">Keys</h2></summary>
+<p>Super+/: every sway key with what it does, with search. It reads the sway configs, so a new key shows up by itself. The list: <a href="keybinds.html">Keybinds</a>.</p>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/keys">scripts/keys</a> → <code>~/.local/bin/keys</code></p>
+</details>
+<details class="section">
+<summary><h2 id="lock">Lock</h2></summary>
+<p>Super+Escape: locks the screen and turns the screens off. Super+Escape again: the screens on. The password can be typed with the screens off too.</p>
+<p>The screen does not lock by itself after a while: there is no swayidle, on Artix it needs elogind.</p>
+<p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/lock">scripts/lock</a> → <code>~/.local/bin/lock</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaylock/config">config/swaylock/config</a> → <code>~/.config/swaylock/config</code></p>
+</details>
+<details class="section">
+<summary><h2 id="wallpaper">Wallpaper</h2></summary>
+<p>The newest picture (png, jpg) in <code>~/wallpapers</code>; black if there is none. The first install picks the one of your distro.</p>
+<p>To change it: put a picture in <code>~/wallpapers</code> (or <code>touch</code> one that is there) and press Super+Shift+C.</p>
+<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/wallpaper">scripts/wallpaper</a> → <code>~/.local/bin/wallpaper</code></p>
+</details>
+<details class="section">
+<summary><h2 id="terminal">Terminal</h2></summary>
+<p>foot runs as one server, every terminal is a small footclient window. The shell is zsh; a new window shows <a href="components.html#fastfetch">fastfetch</a>. Logging in on tty1 starts sway, the other TTYs stay consoles.</p>
+<p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/foot/foot.ini">config/foot/foot.ini</a> → <code>~/.config/foot/foot.ini</code> (also the palette)<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zshrc">home/.zshrc</a> → <code>~/.zshrc</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zprofile">home/.zprofile</a> → <code>~/.zprofile</code> (starts sway)</p>
+</details>
+<details class="section">
+<summary><h2 id="background">In the background</h2></summary>
+<p>Scripts you don't run yourself.</p>
+<p><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/sound">sound</a>: starts PipeWire with sway and stops it when sway exits; there is no systemd to do it.</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">

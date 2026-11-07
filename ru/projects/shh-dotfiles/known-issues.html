@@ -26,10 +26,22 @@
 <main>
 <article>
 <h1>Известные проблемы</h1>
-<h2>NVIDIA</h2>
-<p>TODO</p>
-<h2>Void Linux</h2>
-<p>TODO</p>
+<details class="section">
+<summary><h2 id="nvidia">NVIDIA</h2></summary>
+<ul class="spaced">
+<li>На картах NVIDIA не проверялось. GTX 6xx / 7xx и более старые работают на nouveau.</li>
+<li>Чёрный экран после загрузки: уберите <code>kms</code> из <code>HOOKS</code> в <code>/etc/mkinitcpio.conf</code>, затем:
+<pre><code>sudo mkinitcpio -P</code></pre></li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="void">Void Linux</h2></summary>
+<ul class="spaced">
+<li>На musl нет драйвера NVIDIA: карты NVIDIA работают только на nouveau.</li>
+<li><code>wpa_supplicant</code> спорит с <code>iwd</code> за wifi. Выключите его:
+<pre><code>sudo rm /var/service/wpa_supplicant</code></pre></li>
+</ul>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">

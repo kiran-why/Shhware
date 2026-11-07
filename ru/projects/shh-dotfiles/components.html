@@ -26,54 +26,110 @@
 <main>
 <article>
 <h1>Компоненты</h1>
-<h2 id="features">features</h2>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>bluetooth</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>screenshare</code></h3>
-<p>TODO</p>
-<h3><code>autotile</code></h3>
-<p>TODO</p>
-<h3><code>fastfetch</code></h3>
-<p>TODO</p>
-<h3><code>scratchpad</code></h3>
-<p>TODO</p>
-<h2 id="misc">misc</h2>
-<p>TODO</p>
-<h3><code>firefox</code></h3>
-<p>TODO</p>
-<h3><code>sing-box</code></h3>
-<p>TODO</p>
-<h3><code>mpv</code></h3>
-<p>TODO</p>
-<h3><code>imv</code></h3>
-<p>TODO</p>
-<h3><code>btop</code></h3>
-<p>TODO</p>
-<h3><code>7zip</code></h3>
-<p>TODO</p>
-<h3><code>man</code></h3>
-<p>TODO</p>
-<h3><code>mako</code></h3>
-<p>TODO</p>
-<h3><code>emoji</code></h3>
-<p>TODO</p>
-<h3><code>noto</code></h3>
-<p>TODO</p>
-<h2 id="settings">settings</h2>
-<p>TODO</p>
-<h3>xwayland</h3>
-<p>TODO</p>
-<h3>editor</h3>
-<p>TODO</p>
-<h3>file manager</h3>
-<p>TODO</p>
-<h3>maxhz</h3>
-<p>TODO</p>
+<p>Части системы, которые вы выбираете в <a href="shh.html#config">shh config</a>, на трёх вкладках: settings, features, misc. Списки: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/components/artix_components.txt"><code>components/artix_components.txt</code></a> и <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/components/void_components.txt"><code>components/void_components.txt</code></a>. Всё остальное ставится всегда.</p>
+<p>Файлы ниже: путь в репозитории → куда его кладёт установка.</p>
+<p>Выключили часть? Следующий <a href="shh.html#update">shh update</a> удалит её файлы (кроме тех, что вы меняли), остановит её сервис и спросит, удалить ли её пакеты.</p>
+<details class="section">
+<summary><h2 id="settings">Settings</h2></summary>
+<p>Параметры установки.</p>
+<ul class="spaced">
+<li><code>mode</code>: copy (по умолчанию) или link.<br>copy: конфиги скопированы, репозиторий можно удалить.<br>link: конфиги — ссылки на репозиторий, ваши правки попадают в него.</li>
+<li><code>layouts</code>: раскладки клавиатуры, первая — основная. По умолчанию: us,ru.</li>
+<li><code>switch layout</code>: клавиши переключения раскладки: Alt+Shift (по умолчанию), Ctrl+Shift, Super+Space, Caps Lock, левый Alt+левый Shift.</li>
+<li><code>dns</code>: DHCP (по умолчанию), Cloudflare, Quad9, Google.<br>Любой другой: вручную в <code>~/.config/shh/config</code>.</li>
+<li><code>graphics</code>: auto (по умолчанию) или вручную: AMD, Intel, NVIDIA, Nouveau.<br>auto: драйверы для видеокарт, которые находит <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/hardware">scripts/hardware</a>.<br>NVIDIA и Nouveau вместе выбрать нельзя.</li>
+<li><code>editor</code>: Vim (по умолчанию) или Neovim.<br>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/vim">config/vim</a> → <code>~/.config/vim</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/nvim">config/nvim</a> → <code>~/.config/nvim</code></li>
+<li><code>file manager</code>: Broot (по умолчанию) или Yazi, открывается на Super+F.<br>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/broot">config/broot</a> → <code>~/.config/broot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/broot">config/sway/features/broot</a> → <code>~/.config/sway/features/broot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/yazi">config/yazi</a> → <code>~/.config/yazi</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/yazi">config/sway/features/yazi</a> → <code>~/.config/sway/features/yazi</code></li>
+<li><code>aur helper</code>, только Artix: yay (по умолчанию) или paru.</li>
+<li><code>pacman</code>, только Artix: цвета, параллельные загрузки, сборка из AUR на всех ядрах. По умолчанию вкл.</li>
+<li><code>nobeep</code>: выключает пищалку материнской платы. По умолчанию вкл.</li>
+<li><code>maxhz</code>: каждый экран на максимальной частоте обновления, и экран, подключённый позже. По умолчанию вкл.<br>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/maxhz">scripts/maxhz</a> → <code>~/.local/bin/maxhz</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/maxhz">config/sway/features/maxhz</a> → <code>~/.config/sway/features/maxhz</code></li>
+<li><code>xwayland</code>: программы для X11, после перезахода. По умолчанию выкл.<br>Выкл.: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/noxwayland">config/sway/features/noxwayland</a> → <code>~/.config/sway/features/noxwayland</code><br>Вкл.: на Artix ставится xorg-xwayland; на Void он стоит всегда, он нужен sway.</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="features">Features</h2></summary>
+<p>Скрипты и настройки sway, которые упрощают работу с системой. По умолчанию все включены. Строки sway каждой фичи лежат в её собственном файле в <code>config/sway/features/</code>.</p>
+<h3 id="fastfetch"><code>fastfetch</code></h3>
+<p>Информация о системе в каждом новом окне foot: слева наше лого, справа рамка с ОС, ядром, CPU, GPU, RAM, диском и другим.</p>
+<p>Чтобы поменять лого: положите свой файл в <code>~/.config/fastfetch/logos/</code> и впишите путь к нему в <code>"source"</code> в <code>~/.config/fastfetch/config.jsonc</code>. Без <code>$</code> в лого: fastfetch читает <code>$1</code>…<code>$9</code> как цвета. В режиме copy следующий shh update вернёт исходный <code>config.jsonc</code>, ваш останется рядом как <code>config.jsonc.bak-ДАТА</code>.</p>
+<ul class="spaced">
+<li>Файлы: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/fastfetch">config/fastfetch</a> → <code>~/.config/fastfetch</code></li>
+<li>Запускает: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zshrc">home/.zshrc</a> → <code>~/.zshrc</code></li>
+<li>Пакет: fastfetch</li>
+</ul>
+<h3 id="autotile"><code>autotile</code></h3>
+<p>Тайлинг как dwindle в Hyprland: новое окно делит активное пополам по его длинной стороне. Плавающие, полноэкранные, stacked и tabbed окна не трогает.</p>
+<ul class="spaced">
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/autotile">scripts/autotile</a> → <code>~/.local/bin/autotile</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/autotile">config/sway/features/autotile</a> → <code>~/.config/sway/features/autotile</code></li>
+<li>Пакет: своего нет</li>
+</ul>
+<h3 id="clipboard"><code>clipboard</code></h3>
+<p>История буфера обмена: последние 100 копирований, любое можно скопировать снова. Первая строка истории очищает её.</p>
+<ul class="spaced">
+<li>Клавиши:<br>Super+C: открыть / закрыть историю<br>Enter: скопировать<br>Ctrl+D: удалить одну запись</li>
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/clipboard">scripts/clipboard</a> → <code>~/.local/bin/clipboard</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/cliphist">config/cliphist</a> → <code>~/.config/cliphist</code> (размер истории)<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/clipboard">config/sway/features/clipboard</a> → <code>~/.config/sway/features/clipboard</code></li>
+<li>Пакет: cliphist</li>
+</ul>
+<h3 id="record"><code>record</code></h3>
+<p>Запись экрана. Выделите область мышью или щёлкните по экрану, чтобы записать его целиком; Esc отменяет. Пока идёт запись, на панели горит <code>● rec</code>. Чтобы остановить, нажмите любую из клавиш ещё раз.</p>
+<ul class="spaced">
+<li>Клавиши:<br>Ctrl+Print: без звука<br>Ctrl+Alt+Print: со звуком системы<br>Alt+Print: с микрофоном</li>
+<li>Сохраняет в: <code>~/media/recordings/</code></li>
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/record">scripts/record</a> → <code>~/.local/bin/record</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/record">config/sway/features/record</a> → <code>~/.config/sway/features/record</code></li>
+<li>Пакет: wf-recorder</li>
+</ul>
+<h3 id="screenshot"><code>screenshot</code></h3>
+<p>Скриншоты, заодно копируются в буфер обмена. Esc отменяет.</p>
+<ul class="spaced">
+<li>Клавиши:<br>Print: область<br>Shift+Print: все экраны</li>
+<li>Сохраняет в: <code>~/media/screenshots/</code></li>
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/screenshot">scripts/screenshot</a> → <code>~/.local/bin/screenshot</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshot">config/sway/features/screenshot</a> → <code>~/.config/sway/features/screenshot</code></li>
+<li>Пакет: grim</li>
+</ul>
+<h3 id="bluetooth"><code>bluetooth</code></h3>
+<p>Bluetooth и его меню: Bluez в меню панели (<a href="environment.html">Окружение</a>). Включить / выключить, подключить новое устройство, подключиться, отключиться, забыть устройство. Запроса PIN нет: клавиатуру, которая просит PIN, подключайте в <code>bluetoothctl</code>. Нет адаптера — меню так и скажет.</p>
+<ul class="spaced">
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/bluetooth">scripts/bluetooth</a> → <code>~/.local/bin/bluetooth</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/bluetooth">config/sway/features/bluetooth</a> → <code>~/.config/sway/features/bluetooth</code></li>
+<li>Пакеты:<br>Artix: bluez, bluez-utils, bluez-s6<br>Void: bluez, libspa-bluetooth</li>
+<li>Сервис: bluetoothd</li>
+</ul>
+<h3 id="scratchpad"><code>scratchpad</code></h3>
+<p>Спрятанные окна: спрячьте окно и верните его на любом рабочем пространстве.</p>
+<ul class="spaced">
+<li>Клавиши:<br>Super+Shift+S: спрятать окно<br>Super+S: показать / спрятать его</li>
+<li>Файлы: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/scratchpad">config/sway/features/scratchpad</a> → <code>~/.config/sway/features/scratchpad</code></li>
+<li>Пакет: своего нет</li>
+</ul>
+<h3 id="screenshare"><code>screenshare</code></h3>
+<p>Показ экрана в браузере.</p>
+<ul class="spaced">
+<li>Файлы: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshare">config/sway/features/screenshare</a> → <code>~/.config/sway/features/screenshare</code></li>
+<li>Пакет: xdg-desktop-portal-wlr</li>
+</ul>
+</details>
+<details class="section">
+<summary><h2 id="misc">Misc</h2></summary>
+<p>Дополнительные программы. По умолчанию все включены, ненужное можно выключить.</p>
+<table>
+<thead>
+<tr><th>Имя</th><th>Что это</th><th>Artix</th><th>Void</th></tr>
+</thead>
+<tbody>
+<tr><td><code>firefox</code></td><td>браузер</td><td>firefox</td><td>firefox</td></tr>
+<tr><td><code>sing-box</code></td><td>VPN-клиент</td><td>sing-box</td><td>sing-box</td></tr>
+<tr><td><code>mpv</code></td><td>видеоплеер</td><td>mpv</td><td>mpv</td></tr>
+<tr><td><code>imv</code></td><td>просмотр картинок</td><td>imv</td><td>imv</td></tr>
+<tr><td><code>btop</code></td><td>системный монитор</td><td>btop</td><td>btop</td></tr>
+<tr><td><code>7zip</code></td><td>архивы</td><td>7zip</td><td>7zip</td></tr>
+<tr><td><code>man</code></td><td>справочные страницы</td><td>man-db, man-pages</td><td>man-pages-devel</td></tr>
+<tr><td><code>mako</code></td><td>уведомления</td><td>mako</td><td>mako</td></tr>
+<tr><td><code>emoji</code></td><td>шрифт эмодзи</td><td>noto-fonts-emoji</td><td>noto-fonts-emoji</td></tr>
+<tr><td><code>noto</code></td><td>шрифт текста</td><td>noto-fonts</td><td>noto-fonts-ttf</td></tr>
+</tbody>
+</table>
+<p>Чего нет в списке: <code>sudo pacman -S NAME</code> (Artix) или <code>sudo xbps-install NAME</code> (Void).</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">

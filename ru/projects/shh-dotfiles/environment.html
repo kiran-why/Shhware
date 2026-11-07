@@ -26,50 +26,92 @@
 <main>
 <article>
 <h1>Окружение</h1>
-<h2>Панель</h2>
-<p>TODO</p>
-<h2>Меню</h2>
-<p>TODO</p>
-<h2>Скрипты</h2>
-<p>TODO</p>
-<h3><code>autotile</code></h3>
-<p>TODO</p>
-<h3><code>bluetooth</code></h3>
-<p>TODO</p>
-<h3><code>brightness</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>hardware</code></h3>
-<p>TODO</p>
-<h3><code>keys</code></h3>
-<p>TODO</p>
-<h3><code>launcher</code></h3>
-<p>TODO</p>
-<h3><code>lock</code></h3>
-<p>TODO</p>
-<h3><code>maxhz</code></h3>
-<p>TODO</p>
-<h3><code>power</code></h3>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>screenshot</code></h3>
-<p>TODO</p>
-<h3><code>settings</code></h3>
-<p>TODO</p>
-<h3><code>sound</code></h3>
-<p>TODO</p>
-<h3><code>vmware-clipboard</code></h3>
-<p>TODO</p>
-<h3><code>volume</code></h3>
-<p>TODO</p>
-<h3><code>vpn</code></h3>
-<p>TODO</p>
-<h3><code>wallpaper</code></h3>
-<p>TODO</p>
-<h3><code>wifi</code></h3>
-<p>TODO</p>
+<p>Sway с простой панелью. Меню и инструменты — небольшие shell-скрипты, которые открываются в терминале. Скрипты: <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/scripts">scripts/</a> → <code>~/.local/bin/</code>. Клавиши: <a href="keybinds.html">Горячие клавиши</a>.</p>
+<p>Сюда же относятся, описаны в Компонентах: <a href="components.html#autotile">autotile</a>, <a href="components.html#bluetooth">bluetooth</a>, <a href="components.html#clipboard">clipboard</a>, <a href="components.html#settings">maxhz</a>, <a href="components.html#record">record</a>, <a href="components.html#screenshot">screenshot</a>.</p>
+<details class="section">
+<summary><h2 id="bar">Панель</h2></summary>
+<p>Вверху. Слева рабочие пространства, по одному <code>●</code> на каждое. Справа:</p>
+<ul class="spaced">
+<li><code>● rec</code>: пока идёт запись экрана, клик её останавливает;</li>
+<li>часы: клик показывает дату, следующий — время;</li>
+<li>батарея, только на ноутбуках: красная и уведомление при 10% и меньше;</li>
+<li>лого вашего дистрибутива: клик открывает <a href="#menu">меню</a>.</li>
+</ul>
+<p>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaybar/bar">config/swaybar/bar</a> → <code>~/.config/swaybar/bar</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaybar/status.sh">config/swaybar/status.sh</a> → <code>~/.config/swaybar/status.sh</code></p>
+</details>
+<details class="section">
+<summary><h2 id="menu">Меню</h2></summary>
+<p>Super+M или кнопка на панели; то же ещё раз закрывает его. Esc — назад. Bluez и VPN — части, которые можно выключить в <a href="shh.html#config">shh config</a> (bluetooth, sing-box): после следующего <a href="shh.html#update">shh update</a> их строка пропадает из меню.</p>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/menu">scripts/menu</a> → <code>~/.local/bin/menu</code></p>
+<h3 id="wifi">Wifi</h3>
+<ul class="spaced">
+<li>Available networks: подключиться;</li>
+<li>Known networks: забыть сеть;</li>
+<li>Check internet: пробует github.com, kernel.org, wikipedia.org;</li>
+<li>Disconnect: отключиться.</li>
+</ul>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/wifi">scripts/wifi</a> → <code>~/.local/bin/wifi</code></p>
+<h3 id="volume">Volume</h3>
+<ul class="spaced">
+<li>(+) Volume, (-) Volume: шаг 5%, максимум 100%;</li>
+<li>Mute/unmute: звук или микрофон;</li>
+<li>In/out devices: куда идёт звук и откуда берётся.</li>
+</ul>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/volume">scripts/volume</a> → <code>~/.local/bin/volume</code>, шаг и максимум в начале файла</p>
+<h3 id="bluez">Bluez</h3>
+<p>Bluetooth: <a href="components.html#bluetooth">Компоненты: bluetooth</a>.</p>
+<h3 id="vpn">VPN</h3>
+<p>sing-box с подпиской от вашего VPN-провайдера.</p>
+<ul class="spaced">
+<li>On/off: включить / выключить;</li>
+<li>Locations: выбрать сервер;</li>
+<li>Add subscription: вставьте ссылку. Она хранится в <code>/etc/sing-box/subscription</code>, читать её может только root. Потом удалите ссылку из <a href="components.html#clipboard">истории буфера</a> (Super+C);</li>
+<li>Update subscription: обновить подписку;</li>
+<li>Start at boot: запуск при загрузке, вкл. / выкл.</li>
+</ul>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vpn">scripts/vpn</a> → <code>~/.local/bin/vpn</code></p>
+<h3 id="prefs">Prefs</h3>
+<ul class="spaced">
+<li>Svc: включить или выключить сервис прямо сейчас (спросит пароль). После перезагрузки они запускаются так, как сказано в <a href="shh.html#config">shh config</a>. seatd и dbus помечены: без seatd не работает sway, без dbus — wifi и bluetooth;</li>
+<li>Light: ярче / темнее, шаг 5%, не ниже 5%: при 0 экран может стать чёрным.</li>
+</ul>
+<p>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/settings">scripts/settings</a> → <code>~/.local/bin/settings</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/brightness">scripts/brightness</a> → <code>~/.local/bin/brightness</code></p>
+<h3 id="power">Power</h3>
+<p>Exit (выйти из sway), Power off, Reboot, Sleep. Ещё на Super+L. Выбранное выполняется сразу, без «вы уверены?».</p>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/power">scripts/power</a> → <code>~/.local/bin/power</code></p>
+</details>
+<details class="section">
+<summary><h2 id="launcher">Запуск программ</h2></summary>
+<p>Super+R: все программы из <code>$PATH</code>, с поиском. Терминальные программы открываются в своём окне терминала, остальные — как есть.</p>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/launcher">scripts/launcher</a> → <code>~/.local/bin/launcher</code></p>
+</details>
+<details class="section">
+<summary><h2 id="keys">Список клавиш</h2></summary>
+<p>Super+/: все клавиши sway и что они делают, с поиском. Читает конфиги sway, поэтому новая клавиша появляется сама. Список: <a href="keybinds.html">Горячие клавиши</a>.</p>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/keys">scripts/keys</a> → <code>~/.local/bin/keys</code></p>
+</details>
+<details class="section">
+<summary><h2 id="lock">Блокировка</h2></summary>
+<p>Super+Escape: блокирует экран и гасит экраны. Ещё раз Super+Escape — экраны включаются. Пароль можно вводить и при погашенных экранах.</p>
+<p>Сам по себе через время экран не блокируется: swayidle нет, на Artix ему нужен elogind.</p>
+<p>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/lock">scripts/lock</a> → <code>~/.local/bin/lock</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/swaylock/config">config/swaylock/config</a> → <code>~/.config/swaylock/config</code></p>
+</details>
+<details class="section">
+<summary><h2 id="wallpaper">Обои</h2></summary>
+<p>Самая новая картинка (png, jpg) в <code>~/wallpapers</code>; если её нет — чёрный фон. Первая установка ставит обои вашего дистрибутива.</p>
+<p>Чтобы сменить: положите картинку в <code>~/wallpapers</code> (или сделайте <code>touch</code> той, что уже там) и нажмите Super+Shift+C.</p>
+<p>Файл: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/wallpaper">scripts/wallpaper</a> → <code>~/.local/bin/wallpaper</code></p>
+</details>
+<details class="section">
+<summary><h2 id="terminal">Терминал</h2></summary>
+<p>foot работает одним сервером, каждый терминал — лёгкое окно footclient. Оболочка — zsh; новое окно показывает <a href="components.html#fastfetch">fastfetch</a>. Вход на tty1 запускает sway, остальные TTY остаются консолями.</p>
+<p>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/foot/foot.ini">config/foot/foot.ini</a> → <code>~/.config/foot/foot.ini</code> (там же палитра)<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zshrc">home/.zshrc</a> → <code>~/.zshrc</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zprofile">home/.zprofile</a> → <code>~/.zprofile</code> (запускает sway)</p>
+</details>
+<details class="section">
+<summary><h2 id="background">В фоне</h2></summary>
+<p>Скрипты, которые вы сами не запускаете.</p>
+<p><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/sound">sound</a>: запускает PipeWire вместе с sway и останавливает, когда sway закрывается; нет systemd, который делал бы это.</p>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="вики">

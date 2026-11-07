@@ -25,28 +25,91 @@
 <main>
 <article>
 <h1>Keybinds</h1>
-<h2>Main keys</h2>
-<p>TODO</p>
-<h2>Workspaces</h2>
-<p>TODO</p>
-<h2>Component keys</h2>
-<p>TODO</p>
-<h3><code>broot</code></h3>
-<p>TODO</p>
-<h3><code>clipboard</code></h3>
-<p>TODO</p>
-<h3><code>firefox</code></h3>
-<p>TODO</p>
-<h3><code>mako</code></h3>
-<p>TODO</p>
-<h3><code>record</code></h3>
-<p>TODO</p>
-<h3><code>scratchpad</code></h3>
-<p>TODO</p>
-<h3><code>yazi</code></h3>
-<p>TODO</p>
-<h2>Key list: Super+/</h2>
-<p>TODO</p>
+<p>Super is the Windows key. <strong>Super+/</strong> shows every key, with search; a new key in the configs shows up there by itself (<a href="environment.html#keys">keys</a>). The keys work on any keyboard layout.</p>
+<p>Files: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/keybinds">config/sway/keybinds</a>, <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/workspaces">config/sway/workspaces</a>, the keys of each part in <a href="https://github.com/kiran-why/Shh-dotfiles/tree/main/config/sway/features">config/sway/features/</a>; installed to <code>~/.config/sway/</code>.</p>
+<details class="section">
+<summary><h2 id="programs">Programs</h2></summary>
+<table>
+<thead>
+<tr><th>Keys</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+T</td><td>terminal</td></tr>
+<tr><td>Super+R</td><td><a href="environment.html#launcher">launcher</a></td></tr>
+<tr><td>Super+M</td><td><a href="environment.html#menu">menu</a>, again: close it</td></tr>
+<tr><td>Super+L</td><td><a href="environment.html#power">power</a>: exit, power off, reboot, sleep</td></tr>
+<tr><td>Super+Escape</td><td><a href="environment.html#lock">lock</a>, screens off; again: screens on</td></tr>
+<tr><td>Super+/</td><td>all keys, again: close</td></tr>
+<tr><td>Super+Shift+C</td><td>reload the sway config</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="windows">Windows</h2></summary>
+<table>
+<thead>
+<tr><th>Keys</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+Q</td><td>close the window</td></tr>
+<tr><td>Super+Shift+F</td><td>fullscreen</td></tr>
+<tr><td>Super+V</td><td>float / tile</td></tr>
+<tr><td>Super+arrows</td><td>focus another window</td></tr>
+<tr><td>Super+Shift+arrows</td><td>move the window</td></tr>
+<tr><td>Super+left mouse</td><td>drag a window</td></tr>
+<tr><td>Super+right mouse</td><td>resize a window</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="workspaces">Workspaces</h2></summary>
+<table>
+<thead>
+<tr><th>Keys</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>Super+1 … 0</td><td>go to workspace 1 … 10</td></tr>
+<tr><td>Super+Shift+1 … 0</td><td>send the window to workspace 1 … 10</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="media">Volume, brightness, layout</h2></summary>
+<table>
+<thead>
+<tr><th>Keys</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>volume keys</td><td>volume up / down / mute, the level shows in a notification</td></tr>
+<tr><td>brightness keys</td><td>brightness up / down, the level shows in a notification</td></tr>
+<tr><td>Alt+Shift</td><td>switch the keyboard layout; other keys: <a href="components.html#settings">settings: switch layout</a></td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
+<summary><h2 id="parts">Keys of the parts</h2></summary>
+<p>Turn a part off in <a href="shh.html#config">shh config</a>, e.g. record, and its keys go too: the next <a href="shh.html#update">shh update</a> removes its file <code>~/.config/sway/features/record</code>, where they live. Until Super+Shift+C (or a relogin) sway still knows the old keys.</p>
+<table>
+<thead>
+<tr><th>Keys</th><th>Action</th><th>Part</th></tr>
+</thead>
+<tbody>
+<tr><td>Print</td><td>screenshot of a region</td><td><a href="components.html#screenshot">screenshot</a></td></tr>
+<tr><td>Shift+Print</td><td>screenshot of all screens</td><td><a href="components.html#screenshot">screenshot</a></td></tr>
+<tr><td>Ctrl+Print</td><td>record the screen, no sound; again: stop</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Ctrl+Alt+Print</td><td>record with the system sound</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Alt+Print</td><td>record with the microphone</td><td><a href="components.html#record">record</a></td></tr>
+<tr><td>Super+C</td><td>clipboard history, again: close</td><td><a href="components.html#clipboard">clipboard</a></td></tr>
+<tr><td>Super+Shift+S</td><td>hide the window</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
+<tr><td>Super+S</td><td>show / hide the hidden window</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
+<tr><td>Super+F</td><td>file manager</td><td><a href="components.html#settings">file manager</a></td></tr>
+<tr><td>Super+B</td><td>browser</td><td><a href="components.html#misc">firefox</a></td></tr>
+<tr><td>Super+N</td><td>close the notification</td><td><a href="components.html#misc">mako</a></td></tr>
+<tr><td>Super+Shift+N</td><td>close all notifications</td><td><a href="components.html#misc">mako</a></td></tr>
+<tr><td>Super+Ctrl+N</td><td>bring back the last notification</td><td><a href="components.html#misc">mako</a></td></tr>
+</tbody>
+</table>
+</details>
 </article>
 </main>
 <nav class="steps" aria-label="wiki">
