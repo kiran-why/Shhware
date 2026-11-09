@@ -152,6 +152,14 @@ a:hover {
   line-height: 1.15; /* block characters touch, no gaps between rows */
 }
 
+/* the same logo as a picture, for narrow screens (claude/scripts/logo.py) */
+.logo-img {
+  display: none;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+}
+
 /* 404: the dead stickman under the big 404 */
 .dead {
   text-align: center;
@@ -481,9 +489,18 @@ footer .stickman:hover {
   }
 }
 
-/* one column, phones turned sideways too: the note under the word would run off the screen,
-   so it takes the width of the screen instead */
+/* one column, phones turned sideways too */
 @media (max-width: 60rem) {
+  /* block characters take their width and height from the phone's font, and the art falls apart */
+  .logo {
+    display: none;
+  }
+
+  .logo-img {
+    display: block;
+  }
+
+  /* the note under the word would run off the screen: it takes the width of the screen instead */
   .tip {
     position: static;
   }
