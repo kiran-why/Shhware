@@ -6,6 +6,9 @@
 
 cd "$(dirname "$0")/.." || exit 1
 
+# the site's address: absolute hreflang links start with it
+site=https://shhware.org/
+
 pages() {
     find . -name '*.html'
 }
@@ -40,7 +43,7 @@ check() {
             p=${u%%#*}
             case $p in
                 /*)
-                    # only 404.html may use root paths (Codeberg serves it for any path)
+                    # only 404.html may use root paths (GitHub Pages serves it for any missing path)
                     if [ "$f" != ./404.html ]; then echo "$f: root path $u"; continue; fi
                     t=.$p ;;
                 *) t=$dir/$p ;;
@@ -68,7 +71,12 @@ check() {
         tr '<' '\n' < "$f" | grep ' hreflang="' | while IFS= read -r tag; do
             l=$(printf '%s\n' "$tag" | sed 's/.* hreflang="\([^"]*\)".*/\1/')
             h=$(printf '%s\n' "$tag" | sed -n 's/.* href="\([^"]*\)".*/\1/p')
-            [ "$(canon "$dir/$h")" = "$PWD/$l/$rest" ] ||
+            # head alternates are absolute (https://shhware.org/...), the body link relative
+            case $h in
+                "$site"*) t=./${h#"$site"} ;;
+                *) t=$dir/$h ;;
+            esac
+            [ "$(canon "$t")" = "$PWD/$l/$rest" ] ||
                 echo "$f: hreflang $l link $h is not $l/$rest"
         done
     done
