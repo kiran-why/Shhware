@@ -1,6 +1,8 @@
 /* dark, monochrome: white, black and grays only, like a terminal */
 :root {
   color-scheme: dark;
+  text-size-adjust: 100%; /* phones turned sideways must not enlarge the text */
+  -webkit-text-size-adjust: 100%; /* Safari */
   --red: #c4121f; /* the one alarm color: the status dot */
   --bg: #000000;
   --fg: #c8c8c8;
@@ -11,6 +13,7 @@
 body {
   box-sizing: border-box;
   min-height: 100vh;
+  min-height: 100svh; /* on phones 100vh is taller than the screen: the browser's bars would hide the footer */
   max-width: 80ch;
   margin: 0 auto;
   padding: 1rem;
@@ -415,4 +418,83 @@ footer .stickman {
 
 footer .stickman:hover {
   background: url("img/stickman.svg") center / contain no-repeat; /* no inverted block, like other links */
+}
+
+/* phones */
+@media (max-width: 40rem) {
+  /* a table doesn't fit: every row is stacked, the first cell in white, the rest under it */
+  main table,
+  main tbody,
+  main tr,
+  main td {
+    display: block;
+  }
+
+  main thead {
+    display: none;
+  }
+
+  main tr + tr {
+    margin-top: 0.75em;
+  }
+
+  main td {
+    padding: 0;
+    overflow-wrap: anywhere;
+  }
+
+  main td:first-child {
+    color: var(--accent);
+  }
+
+  main td + td {
+    padding-left: 2ch;
+  }
+
+  /* the column names are gone: where a cell can't be understood without one, it says what it is
+     (these words are the same in en and ru) */
+  main table.pkgs td:nth-child(3)::before {
+    content: "Artix: ";
+  }
+
+  main table.pkgs td:nth-child(4)::before {
+    content: "Void: ";
+  }
+
+  main table.init td:nth-child(2)::before {
+    content: "Init: ";
+  }
+
+  main table.parts td:nth-child(3)::before {
+    content: "→ ";
+  }
+
+  /* the default 40px indent is a tenth of the screen */
+  main ul,
+  main ol {
+    padding-left: 3ch;
+  }
+
+  /* the stickman stands 2.9rem above the bar: without this he stands on the repository line */
+  footer .status {
+    margin-top: 3rem;
+  }
+}
+
+/* one column, phones turned sideways too: the note under the word would run off the screen,
+   so it takes the width of the screen instead */
+@media (max-width: 60rem) {
+  .tip {
+    position: static;
+  }
+
+  .tip:hover .tip-text,
+  .tip:focus .tip-text {
+    top: auto;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: none;
+    margin-top: 1.5em;
+  }
 }
