@@ -43,6 +43,7 @@
 <li><code>nobeep</code>: mutes the motherboard beeper. On by default.</li>
 <li><code>maxhz</code>: every screen at its highest refresh rate, also one plugged in later. On by default.<br>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/maxhz">scripts/maxhz</a> → <code>~/.local/bin/maxhz</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/maxhz">config/sway/features/maxhz</a> → <code>~/.config/sway/features/maxhz</code></li>
 <li><code>xwayland</code>: X11 programs, after a relogin. Off by default.<br>Off: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/noxwayland">config/sway/features/noxwayland</a> → <code>~/.config/sway/features/noxwayland</code><br>On: Artix installs xorg-xwayland; on Void it is always installed, sway needs it.</li>
+<li><code>a11y</code>: screen readers in GTK programs, after a relogin. Off by default.</li>
 </ul>
 </details>
 <details class="section">
@@ -58,7 +59,9 @@
 </ul>
 <h3 id="autotile"><code>autotile</code></h3>
 <p>Tiling like Hyprland's dwindle: a new window splits the focused one in half along its longer side. Floating, fullscreen, stacked and tabbed windows are left alone.</p>
+<p>A dragged window follows the cursor. Drop it on a tiled window and it takes the half the cursor is in; on tabbed or stacked windows it becomes one more of them. A floating window stays where you drop it. Esc drops it too. A short press is just a click.</p>
 <ul class="spaced">
+<li>Keys:<br>Super+left mouse: drag a window</li>
 <li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/autotile">scripts/autotile</a> → <code>~/.local/bin/autotile</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/autotile">config/sway/features/autotile</a> → <code>~/.config/sway/features/autotile</code></li>
 <li>Package: none of its own</li>
 </ul>
@@ -105,6 +108,14 @@
 <li>Files: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshare">config/sway/features/screenshare</a> → <code>~/.config/sway/features/screenshare</code></li>
 <li>Package: xdg-desktop-portal-wlr</li>
 </ul>
+<h3 id="sing-box"><code>sing-box</code></h3>
+<p>VPN and its menu: VPN in the bar menu (<a href="environment.html">Environment</a>). Works with a subscription from your VPN provider.</p>
+<ul class="spaced">
+<li>Menu:<br>On/off<br>Locations: pick a server<br>Add subscription: paste the link. It is kept in <code>/etc/sing-box/subscription</code>, readable by root only. Then delete the link from the <a href="#clipboard">clipboard history</a> (Super+C)<br>Update subscription<br>Start at boot: on / off</li>
+<li>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vpn">scripts/vpn</a> → <code>~/.local/bin/vpn</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/vpn">config/sway/features/vpn</a> → <code>~/.config/sway/features/vpn</code></li>
+<li>Package: sing-box</li>
+<li>Service:<br>Artix: sing-box<br>Void: shh-vpn</li>
+</ul>
 </details>
 <details class="section">
 <summary><h2 id="misc">Misc</h2></summary>
@@ -115,13 +126,12 @@
 </thead>
 <tbody>
 <tr><td><code>firefox</code></td><td>browser</td><td>firefox</td><td>firefox</td></tr>
-<tr><td><code>sing-box</code></td><td>VPN client</td><td>sing-box</td><td>sing-box</td></tr>
 <tr><td><code>mpv</code></td><td>video player</td><td>mpv</td><td>mpv</td></tr>
 <tr><td><code>imv</code></td><td>image viewer</td><td>imv</td><td>imv</td></tr>
 <tr><td><code>btop</code></td><td>system monitor</td><td>btop</td><td>btop</td></tr>
 <tr><td><code>7zip</code></td><td>archives</td><td>7zip</td><td>7zip</td></tr>
 <tr><td><code>man</code></td><td>manual pages</td><td>man-db, man-pages</td><td>man-pages-devel</td></tr>
-<tr><td><code>mako</code></td><td>notifications</td><td>mako</td><td>mako</td></tr>
+<tr><td><code>mako</code></td><td>notifications; when off, none at all</td><td>mako, libnotify</td><td>mako, libnotify</td></tr>
 <tr><td><code>emoji</code></td><td>emoji font</td><td>noto-fonts-emoji</td><td>noto-fonts-emoji</td></tr>
 <tr><td><code>noto</code></td><td>text font</td><td>noto-fonts</td><td>noto-fonts-ttf</td></tr>
 </tbody>
@@ -166,7 +176,7 @@ GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
 No Plan.</pre>
 <p>Site repository: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Site license: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, except the logo</p>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="../../../404.html"><span class="visually-hidden">Someone is sitting here</span></a></p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> no one is watching you<a class="stickman" href="../../../404.html"><span class="visually-hidden">Someone is sitting here</span></a></p>
 </footer>
 </body>
 </html>

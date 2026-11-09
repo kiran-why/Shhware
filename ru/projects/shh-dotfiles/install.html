@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- you read the source. good. -->
 <html lang="ru">
-<!-- TODO: проверить перевод -->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
@@ -137,7 +136,7 @@ sh install.sh --check</code></pre>
 <li><code>install_packages</code>: пакеты из списков, кроме выключенных частей;</li>
 <li><code>configure_gpu</code>: настройки, нужные драйверу видеокарты;</li>
 <li><code>configure_network</code>: iwd, dhcpcd, DNS;</li>
-<li><code>enable_services</code>: services.txt, служба sing-box, группы;</li>
+<li><code>enable_services</code>: services.txt, служба sing-box, группы; выключает лишние консоли: tty3–tty6, на Artix ещё ttyS;</li>
 <li><code>configure_system</code>: оболочка входа, XDG_RUNTIME_DIR, PC speaker, яркость;</li>
 <li><code>configure_power</code>: poweroff, reboot, сон без пароля;</li>
 <li><code>link_dotfiles</code>: lib/link.sh, режим copy или link из shh config;</li>
@@ -182,7 +181,7 @@ GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
 No Plan.</pre>
 <p>Репозиторий сайта: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Лицензия сайта: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, кроме логотипа</p>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> за вами никто не следит<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
 </footer>
 </body>
 </html>

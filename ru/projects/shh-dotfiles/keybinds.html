@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- you read the source. good. -->
 <html lang="ru">
-<!-- TODO: проверить перевод -->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
@@ -87,6 +86,18 @@
 </table>
 </details>
 <details class="section">
+<summary><h2 id="touchpad">Тачпад</h2></summary>
+<table>
+<thead>
+<tr><th>Касание</th><th>Действие</th></tr>
+</thead>
+<tbody>
+<tr><td>один палец</td><td>левый клик</td></tr>
+<tr><td>два пальца</td><td>правый клик</td></tr>
+</tbody>
+</table>
+</details>
+<details class="section">
 <summary><h2 id="parts">Клавиши частей</h2></summary>
 <p>Выключите часть в <a href="shh.html#config">shh config</a>, например record, — пропадут и её клавиши: следующий <a href="shh.html#update">shh update</a> удалит её файл <code>~/.config/sway/features/record</code>, где они записаны. До Super+Shift+C (или перезахода) sway помнит старые клавиши.</p>
 <table>
@@ -102,6 +113,7 @@
 <tr><td>Super+C</td><td>история буфера обмена, ещё раз — закрыть</td><td><a href="components.html#clipboard">clipboard</a></td></tr>
 <tr><td>Super+Shift+S</td><td>спрятать окно</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
 <tr><td>Super+S</td><td>показать / спрятать спрятанное окно</td><td><a href="components.html#scratchpad">scratchpad</a></td></tr>
+<tr><td>Super+левая кнопка мыши</td><td>перетащить окно, оно идёт за курсором</td><td><a href="components.html#autotile">autotile</a></td></tr>
 <tr><td>Super+F</td><td>файловый менеджер</td><td><a href="components.html#settings">file manager</a></td></tr>
 <tr><td>Super+B</td><td>браузер</td><td><a href="components.html#misc">firefox</a></td></tr>
 <tr><td>Super+N</td><td>закрыть уведомление</td><td><a href="components.html#misc">mako</a></td></tr>
@@ -148,7 +160,7 @@ GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
 No Plan.</pre>
 <p>Репозиторий сайта: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Лицензия сайта: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, кроме логотипа</p>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> за вами никто не следит<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
 </footer>
 </body>
 </html>

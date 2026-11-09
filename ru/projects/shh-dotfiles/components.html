@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- you read the source. good. -->
 <html lang="ru">
-<!-- TODO: проверить перевод -->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
@@ -44,6 +43,7 @@
 <li><code>nobeep</code>: выключает пищалку материнской платы. По умолчанию вкл.</li>
 <li><code>maxhz</code>: каждый экран на максимальной частоте обновления, и экран, подключённый позже. По умолчанию вкл.<br>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/maxhz">scripts/maxhz</a> → <code>~/.local/bin/maxhz</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/maxhz">config/sway/features/maxhz</a> → <code>~/.config/sway/features/maxhz</code></li>
 <li><code>xwayland</code>: программы для X11, после перезахода. По умолчанию выкл.<br>Выкл.: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/noxwayland">config/sway/features/noxwayland</a> → <code>~/.config/sway/features/noxwayland</code><br>Вкл.: на Artix ставится xorg-xwayland; на Void он стоит всегда, он нужен sway.</li>
+<li><code>a11y</code>: скринридеры в программах GTK, после перезахода. По умолчанию выкл.</li>
 </ul>
 </details>
 <details class="section">
@@ -59,7 +59,9 @@
 </ul>
 <h3 id="autotile"><code>autotile</code></h3>
 <p>Тайлинг как dwindle в Hyprland: новое окно делит активное пополам по его длинной стороне. Плавающие, полноэкранные, stacked и tabbed окна не трогает.</p>
+<p>Перетаскиваемое окно идёт за курсором. Отпустите его над окном в тайлинге, и оно займёт половину, где курсор; над tabbed или stacked окнами оно станет ещё одним из них. Плавающее окно остаётся там, где его отпустили. Esc тоже отпускает окно. Короткое нажатие — просто клик.</p>
 <ul class="spaced">
+<li>Клавиши:<br>Super+левая кнопка мыши: перетащить окно</li>
 <li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/autotile">scripts/autotile</a> → <code>~/.local/bin/autotile</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/autotile">config/sway/features/autotile</a> → <code>~/.config/sway/features/autotile</code></li>
 <li>Пакет: своего нет</li>
 </ul>
@@ -106,6 +108,14 @@
 <li>Файлы: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/screenshare">config/sway/features/screenshare</a> → <code>~/.config/sway/features/screenshare</code></li>
 <li>Пакет: xdg-desktop-portal-wlr</li>
 </ul>
+<h3 id="sing-box"><code>sing-box</code></h3>
+<p>VPN и его меню: VPN в меню панели (<a href="environment.html">Окружение</a>). Работает с подпиской от вашего VPN-провайдера.</p>
+<ul class="spaced">
+<li>Меню:<br>On/off: включить / выключить<br>Locations: выбрать сервер<br>Add subscription: вставьте ссылку. Она хранится в <code>/etc/sing-box/subscription</code>, читать её может только root. Потом удалите ссылку из <a href="#clipboard">истории буфера</a> (Super+C)<br>Update subscription: обновить подписку<br>Start at boot: запуск при загрузке, вкл. / выкл.</li>
+<li>Файлы:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vpn">scripts/vpn</a> → <code>~/.local/bin/vpn</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/sway/features/vpn">config/sway/features/vpn</a> → <code>~/.config/sway/features/vpn</code></li>
+<li>Пакет: sing-box</li>
+<li>Сервис:<br>Artix: sing-box<br>Void: shh-vpn</li>
+</ul>
 </details>
 <details class="section">
 <summary><h2 id="misc">Misc</h2></summary>
@@ -116,13 +126,12 @@
 </thead>
 <tbody>
 <tr><td><code>firefox</code></td><td>браузер</td><td>firefox</td><td>firefox</td></tr>
-<tr><td><code>sing-box</code></td><td>VPN-клиент</td><td>sing-box</td><td>sing-box</td></tr>
 <tr><td><code>mpv</code></td><td>видеоплеер</td><td>mpv</td><td>mpv</td></tr>
 <tr><td><code>imv</code></td><td>просмотр картинок</td><td>imv</td><td>imv</td></tr>
 <tr><td><code>btop</code></td><td>системный монитор</td><td>btop</td><td>btop</td></tr>
 <tr><td><code>7zip</code></td><td>архивы</td><td>7zip</td><td>7zip</td></tr>
 <tr><td><code>man</code></td><td>справочные страницы</td><td>man-db, man-pages</td><td>man-pages-devel</td></tr>
-<tr><td><code>mako</code></td><td>уведомления</td><td>mako</td><td>mako</td></tr>
+<tr><td><code>mako</code></td><td>уведомления; когда выключен, их нет совсем</td><td>mako, libnotify</td><td>mako, libnotify</td></tr>
 <tr><td><code>emoji</code></td><td>шрифт эмодзи</td><td>noto-fonts-emoji</td><td>noto-fonts-emoji</td></tr>
 <tr><td><code>noto</code></td><td>шрифт текста</td><td>noto-fonts</td><td>noto-fonts-ttf</td></tr>
 </tbody>
@@ -167,7 +176,7 @@ GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
 No Plan.</pre>
 <p>Репозиторий сайта: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Лицензия сайта: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, кроме логотипа</p>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> за вами никто не следит<a class="stickman" href="../../../404.html"><span class="visually-hidden">Тут кто-то сидит</span></a></p>
 </footer>
 </body>
 </html>

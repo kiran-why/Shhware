@@ -59,18 +59,10 @@
 <h3 id="bluez">Bluez</h3>
 <p>Bluetooth: <a href="components.html#bluetooth">Components: bluetooth</a>.</p>
 <h3 id="vpn">VPN</h3>
-<p>sing-box with a subscription from your VPN provider.</p>
-<ul class="spaced">
-<li>On/off;</li>
-<li>Locations: pick a server;</li>
-<li>Add subscription: paste the link. It is kept in <code>/etc/sing-box/subscription</code>, readable by root only. Then delete the link from the <a href="components.html#clipboard">clipboard history</a> (Super+C);</li>
-<li>Update subscription;</li>
-<li>Start at boot: on / off.</li>
-</ul>
-<p>File: <a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/vpn">scripts/vpn</a> → <code>~/.local/bin/vpn</code></p>
+<p>VPN: <a href="components.html#sing-box">Components: sing-box</a>.</p>
 <h3 id="prefs">Prefs</h3>
 <ul class="spaced">
-<li>Svc: turn a service on or off right now (asks for the password). After a reboot they start as <a href="shh.html#config">shh config</a> says. seatd and dbus are marked: without seatd sway does not run, without dbus wifi and bluetooth;</li>
+<li>Svc: turn a service on or off right now (asks for the password). After a reboot they start as <a href="shh.html#config">shh config</a> says.<br>All &gt;, at the end of the list: every service of the init; <code>boot</code> and <code>disabled</code> ones can't be switched here.<br>Marked ones stop only on a second Enter in a row: seatd (sway needs it), dbus (wifi, bluetooth), udevd (devices, network), tty* and agetty-* (ends logins on it);</li>
 <li>Light: brightness up / down, 5% a step, never below 5%: at 0 the screen can go black.</li>
 </ul>
 <p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/settings">scripts/settings</a> → <code>~/.local/bin/settings</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/scripts/brightness">scripts/brightness</a> → <code>~/.local/bin/brightness</code></p>
@@ -102,7 +94,7 @@
 </details>
 <details class="section">
 <summary><h2 id="terminal">Terminal</h2></summary>
-<p>foot runs as one server, every terminal is a small footclient window. The shell is zsh; a new window shows <a href="components.html#fastfetch">fastfetch</a>. Logging in on tty1 starts sway, the other TTYs stay consoles.</p>
+<p>foot runs as one server, every terminal is a small footclient window. The shell is zsh; a new window shows <a href="components.html#fastfetch">fastfetch</a>. Logging in on tty1 starts sway, tty2 stays a console for repairs, the other consoles are off.</p>
 <p>Files:<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/config/foot/foot.ini">config/foot/foot.ini</a> → <code>~/.config/foot/foot.ini</code> (also the palette)<br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zshrc">home/.zshrc</a> → <code>~/.zshrc</code><br><a href="https://github.com/kiran-why/Shh-dotfiles/blob/main/home/.zprofile">home/.zprofile</a> → <code>~/.zprofile</code> (starts sway)</p>
 </details>
 <details class="section">
@@ -148,7 +140,7 @@ GitHub: <a href="https://github.com/kiran-why">github.com/kiran-why</a>
 No Plan.</pre>
 <p>Site repository: <a href="https://github.com/kiran-why/Shhware">github.com/kiran-why/Shhware</a></p>
 <p>Site license: <a href="https://github.com/kiran-why/Shhware/blob/main/LICENSE">MIT</a>, except the logo</p>
-<p class="status"><span class="dot" aria-hidden="true">●</span> NORMAL │ scripts: 0 │ trackers: 0 │ referrer: none<a class="stickman" href="../../../404.html"><span class="visually-hidden">Someone is sitting here</span></a></p>
+<p class="status"><span class="dot" aria-hidden="true">●</span> no one is watching you<a class="stickman" href="../../../404.html"><span class="visually-hidden">Someone is sitting here</span></a></p>
 </footer>
 </body>
 </html>
