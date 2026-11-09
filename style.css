@@ -13,7 +13,7 @@
 body {
   box-sizing: border-box;
   min-height: 100vh;
-  min-height: 100svh; /* on phones 100vh is taller than the screen: the browser's bars would hide the footer */
+  min-height: 100dvh; /* follows the phone browser's bars: the footer stays at the bottom when they hide or show */
   max-width: 80ch;
   margin: 0 auto;
   padding: 1rem;
